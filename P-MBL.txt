@@ -1,0 +1,457 @@
+{
+    "_id" : "8",
+    "KEY" : "PRADAXA_MBL_RAW_DUMP_REPORT",
+    "NAME" : "PRADAXA_MBL_RAW_DUMP_REPORT",
+    "SERVICE" : {
+        "MODULE" : "CASE",
+        "METHOD" : "BULK_SAVE"
+    },
+    "MAPPING_COLUMNS" : [ 
+        {
+            "MAP_ON" : [ 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_FORM",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "GRG_ID"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "PRIMARY_PAGE" : "1",
+    "PAGES" : [ 
+        {
+            "ID" : "1",
+            "PAGE_NAME" : "Raw Report",
+            "COLUMNS" : [ 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_FORM",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "GRG_ID"
+                        }, 
+                        {
+                            "KEY" : "CLAIMANT.DOB"
+                        }, 
+                        {
+                            "KEY" : "CLAIMANT.DOD"
+                        }, 
+                        {
+                            "KEY" : "CLAIMANT.LAST_NAME"
+                        }, 
+                        {
+                            "KEY" : "CLAIMANT.FIRST_NAME"
+                        }, 
+                        {
+                            "KEY" : "CAUSE_OF_DEATH"
+                        }, 
+                        {
+                            "KEY" : "DEATH_CERTIFICATE_FLAG"
+                        }, 
+                        {
+                            "KEY" : "REVIEW_TIME"
+                        }, 
+                        {
+                            "KEY" : "AGE_AT_INJURY"
+                        }
+                    ]
+                }, 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_FORM_PHYSICAL_INJURY",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "PHYSICAL_INJURY"
+                        }, 
+                        {
+                            "KEY" : "HOSPITALIZED"
+                        }, 
+                        {
+                            "KEY" : "INJURY_EVIDENCE_CATEGORY"
+                        }, 
+                        {
+                            "KEY" : "INJURY_EVIDENCE_TYPE"
+                        }, 
+                        {
+                            "KEY" : "INJURY_DT"
+                        }, 
+                        {
+                            "KEY" : "STATE_OF_INJURY"
+                        }, 
+                        {
+                            "KEY" : "DIAGNOSING_FACILITY"
+                        }, 
+                        {
+                            "KEY" : "DIAGNOSING_DOCTOR"
+                        }, 
+                        {
+                            "KEY" : "HICN"
+                        }, 
+                        {
+                            "KEY" : "HEIGHT_AT_INJURY"
+                        }, 
+                        {
+                            "KEY" : "WEIGHT_AT_INJURY"
+                        }, 
+                        {
+                            "KEY" : "SUMMARY_EVENTS"
+                        }, 
+                        {
+                            "KEY" : "DIAGNOSTIC_TESTS"
+                        }, 
+                        {
+                            "KEY" : "MEDICAL_PRESCRIBED"
+                        }, 
+                        {
+                            "KEY" : "NOTE_FLAG"
+                        }, 
+                        {
+                            "KEY" : "MEDICAL_EXPENSES"
+                        }, 
+                        {
+                            "KEY" : "TREATMENT_RECEIVED"
+                        }, 
+                        {
+                            "KEY" : "OTC_USED"
+                        }, 
+                        {
+                            "KEY" : "OTC_NAME"
+                        }, 
+                        {
+                            "KEY" : "EVENT_SUMMARY"
+                        }
+                    ],
+                    "MAPPING_LABEL" : "Injury",
+                    "MAPPING_KEY" : "CASE_RR.INJURY",
+                    "MAPPING_TYPE" : "ARRAY",
+                    "FORM_REPEAT_COUNT" : 1,
+                    "SUB_FORM_KEY" : [ 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_HOSPITAL",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "ADMISSION_DT"
+                                }, 
+                                {
+                                    "KEY" : "DISCHARGE_DT"
+                                }, 
+                                {
+                                    "KEY" : "TRANSFUSION"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Hospital",
+                            "MAPPING_KEY" : "HOSPITAL",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1,
+                            "SUB_FORM_KEY" : [ 
+                                {
+                                    "FORM_KEY" : "PRADAXA_MBL_TRANSFUSION",
+                                    "FIELDS" : [ 
+                                        {
+                                            "KEY" : "TRANSFUSION_DT"
+                                        }, 
+                                        {
+                                            "KEY" : "NO_OF_TRANSFUSION"
+                                        }, 
+                                        {
+                                            "KEY" : "TRANSFUSION_DET"
+                                        }
+                                    ],
+                                    "MAPPING_LABEL" : "Transfusion",
+                                    "MAPPING_KEY" : "TRANSFUSION_SECTION",
+                                    "MAPPING_TYPE" : "ARRAY",
+                                    "FORM_REPEAT_COUNT" : 1
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR",
+                    "FIELDS" : [],
+                    "MAPPING_LABEL" : "Adjustment Factor",
+                    "MAPPING_KEY" : "CASE_RR.ADJUSTMENT_FACTOR",
+                    "MAPPING_TYPE" : "ARRAY",
+                    "FORM_REPEAT_COUNT" : 1,
+                    "SUB_FORM_KEY" : [ 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_ALCOHOL",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "ALCOHOL_USE"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Alcohal Use",
+                            "MAPPING_KEY" : "ALCOHOL_USE",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_TOBACCO",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "TOBACCO"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Tobacco Use",
+                            "MAPPING_KEY" : "TOBACCO_USE",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_DRUG",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "DRUG_USE"
+                                }, 
+                                {
+                                    "KEY" : "DRUG_TYPE"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Drug Use",
+                            "MAPPING_KEY" : "DRUG_USE",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_BMI",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "BMI_HEIGHT"
+                                }, 
+                                {
+                                    "KEY" : "BMI_WEIGHT"
+                                }, 
+                                {
+                                    "KEY" : "BMI"
+                                }, 
+                                {
+                                    "KEY" : "BMI_NARRATIVE"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "BMI",
+                            "MAPPING_KEY" : "BMI",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_MEDICAL_HISTORY",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "MEDICAL_CONDITION"
+                                }, 
+                                {
+                                    "KEY" : "DATE_OF_DX"
+                                }, 
+                                {
+                                    "KEY" : "TREATING_PROVIDER"
+                                }, 
+                                {
+                                    "KEY" : "TREATMENT_PRESCRIBED"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Medical History",
+                            "MAPPING_KEY" : "MEDICAL_HISTORY",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_SURGERY",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "SURGERY"
+                                }, 
+                                {
+                                    "KEY" : "SURGERY_NAME"
+                                }, 
+                                {
+                                    "KEY" : "DATE"
+                                }, 
+                                {
+                                    "KEY" : "FACILITY"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Surgical History",
+                            "MAPPING_KEY" : "SURGERY",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_BLEED_HISTORY",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "PRIOR_HISTORY_OF_BLEED"
+                                }, 
+                                {
+                                    "KEY" : "FAMILY_HISTORY_OF_BLEEDS"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Bleed History",
+                            "MAPPING_KEY" : "BLEED_HISTORY",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_INSUARANCE_PROVIDER",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "INSURANCE"
+                                }, 
+                                {
+                                    "KEY" : "INSURANCE_PROVIDER"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Insurance Provider",
+                            "MAPPING_KEY" : "INSURANCE_PROVIDER",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }, 
+                        {
+                            "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_ADJUSTMENT_FACTOR_IMPAIRMENT",
+                            "FIELDS" : [ 
+                                {
+                                    "KEY" : "DOCUMENTED_RENAL_IMPAIRMENT"
+                                }, 
+                                {
+                                    "KEY" : "DOCUMENTED_LIVER_IMPAIRMENT"
+                                }, 
+                                {
+                                    "KEY" : "DOCUMENTATION_OF_OTHER_BLEEDING_CONDITION"
+                                }
+                            ],
+                            "MAPPING_LABEL" : "Impairment",
+                            "MAPPING_KEY" : "IMPAIRMENT",
+                            "MAPPING_TYPE" : "ARRAY",
+                            "FORM_REPEAT_COUNT" : 1
+                        }
+                    ]
+                }, 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_PROOF_OF_USE",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "DRUG_USAGE_PRESENT"
+                        }, 
+                        {
+                            "KEY" : "DRUG_NAME"
+                        }, 
+                        {
+                            "KEY" : "SOURCE_OF_USAGE"
+                        }, 
+                        {
+                            "KEY" : "DATE_FILLED"
+                        }, 
+                        {
+                            "KEY" : "DAYS_FILLED"
+                        }, 
+                        {
+                            "KEY" : "DRUG_QUANTITY"
+                        }, 
+                        {
+                            "KEY" : "DOSAGE"
+                        }, 
+                        {
+                            "KEY" : "PRESCRIBER"
+                        }, 
+                        {
+                            "KEY" : "WRITTEN_INSTRUCTIONS_PROVIDED"
+                        }, 
+                        {
+                            "KEY" : "STATE_OF_USE"
+                        }, 
+                        {
+                            "KEY" : "REASON_FOR_RX"
+                        }, 
+                        {
+                            "KEY" : "LABEL_USE"
+                        }
+                    ],
+                    "MAPPING_LABEL" : "Proof of Use",
+                    "MAPPING_KEY" : "CASE_RR.PROOF_OF_USE",
+                    "MAPPING_TYPE" : "ARRAY",
+                    "FORM_REPEAT_COUNT" : 1
+                }, 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_FORM_FDH_OTHER_ANTICOAUGULANTS",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "EXPOSURE_TO_OTHER_ANTICOAGULANTS"
+                        }, 
+                        {
+                            "KEY" : "DRUG_NAME"
+                        }, 
+                        {
+                            "KEY" : "FIRST_DT_USAGE"
+                        }, 
+                        {
+                            "KEY" : "LAST_DATE_USAGE"
+                        }, 
+                        {
+                            "KEY" : "SOURCE_OF_USAGE"
+                        }, 
+                        {
+                            "KEY" : "OTHER_DOC"
+                        }, 
+                        {
+                            "KEY" : "DOSAGE"
+                        }, 
+                        {
+                            "KEY" : "REASON_FOR_USE"
+                        }, 
+                        {
+                            "KEY" : "ADVERSE_EFFECTS"
+                        }, 
+                        {
+                            "KEY" : "REASON_FOR_DISCONTINUATION"
+                        }, 
+                        {
+                            "KEY" : "PRESCRIBING_PHYSICIAN"
+                        }
+                    ],
+                    "MAPPING_LABEL" : "FDH Other Anticoagulants",
+                    "MAPPING_KEY" : "CASE_RR.FDH_OTHER_ANTICOAUGULANTS",
+                    "MAPPING_TYPE" : "ARRAY",
+                    "FORM_REPEAT_COUNT" : 1
+                }, 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_SUMMARY",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "SUGGESTED_NEXT_STEPS"
+                        }, 
+                        {
+                            "KEY" : "DATE"
+                        }
+                    ],
+                    "MAPPING_LABEL" : "Suggested Next Steps",
+                    "MAPPING_KEY" : "CASE_RR.SUGGESTED_NEXT_STEP",
+                    "MAPPING_TYPE" : "ARRAY",
+                    "FORM_REPEAT_COUNT" : 1
+                }, 
+                {
+                    "FORM_KEY" : "PRADAXA_MICHAEL_BRADY_LYNCH_RECORD_HISTORY_TAB",
+                    "FIELDS" : [ 
+                        {
+                            "KEY" : "PROVIDER"
+                        }, 
+                        {
+                            "KEY" : "REASON_REQUESTED"
+                        }, 
+                        {
+                            "KEY" : "RECORD_REQ_DT_RANGE"
+                        }, 
+                        {
+                            "KEY" : "PERTINENT_PROVIDER_DT"
+                        }
+                    ],
+                    "MAPPING_LABEL" : "Pertinent Provider",
+                    "MAPPING_KEY" : "CASE_RR.PERTINENT_PROVIDER",
+                    "MAPPING_TYPE" : "ARRAY",
+                    "FORM_REPEAT_COUNT" : 1
+                }
+            ]
+        }
+    ],
+    "STATUS" : "A"
+}
