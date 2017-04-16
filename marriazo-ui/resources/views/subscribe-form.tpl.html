@@ -1,0 +1,30 @@
+<form id="laft-bar-formlaft-bar-form">
+	<div class="text-center">
+		<p class="choose-your">Choose Your</p>
+	</div>
+	<div class="field_mrgn">
+		<label>State</label> <select class="form-control" id="sel1"
+			ng-model="user.state">
+			<option ng-repeat="state in stateList">{{state}}</option>
+		</select>
+	</div>
+	<div class="field_mrgn">
+		<label>City</label> <select class="form-control" id="sel1"
+			ng-model="user.city">
+			<option ng-repeat="city in cityList[user.state]">{{city}}</option>
+		</select>
+	</div>
+	<div class="field_mrgn">
+		<label>Mobile no.</label> <input type="text" required
+			class="form-control" ng-model="user.mobile">
+	</div>
+	<div class="field_mrgn">
+		<label class="labels">Email id</label> <input type="email" required
+			class="form-control" ng-model="user.email">
+	</div>
+	<div style="padding-top: 10px; text-align: center;">
+		<button type="submit" class="btn btn-send" ng-click="register()">
+			Subscribe <span class="glyphicon glyphicon-send"></span>
+		</button>
+	</div>
+</form>
