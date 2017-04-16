@@ -25,7 +25,27 @@ public class LoginController {
 				responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			responseObj.setData(userDto);
+			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
+		}
+
+		return responseObj;
+
+	}
+
+	@RequestMapping(value = "/subscribe.rest", method = RequestMethod.POST)
+	public Object subscribe(@RequestBody SubscribeDTO subscribeDto) {
+		ServiceResponse responseObj = new ServiceResponse();
+		try {
+			if (subscribeDto != null) {
+				loginService.subscribe(subscribeDto);
+				responseObj.setData(subscribeDto);
+				responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseObj.setData(subscribeDto);
 			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
 		}
 

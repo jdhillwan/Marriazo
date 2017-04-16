@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.BasicDBObject;
-import com.webosoft.common.MongoConstants;
 
 @Component
 public class LoginDAOImpl implements LoginDAO {
@@ -13,35 +12,14 @@ public class LoginDAOImpl implements LoginDAO {
 	@Autowired
 	protected MongoOperations mongoTemplate;
 
-	// public UserDTO save(UserDTO userDto) {
-	// MongoClient mongo = new MongoClient("localhost", 27017);
-	// MongoDatabase db = mongo.getDatabase("marriazo");
-	//
-	// db.runCommand(new Document("$eval", "db.loadServerScripts()"));
-	// Document doc1 = db.runCommand(new Document("$eval",
-	// "getNextSeq('user')"));
-	//
-	// String id =
-	// ((Double)((Document)doc1.get("retval")).get("seq")).longValue()+"";
-	// userDto.put("_id", id);
-	//
-	// Document doc = new Document(userDto);
-	// db.getCollection("user").insertOne(doc);
-	//
-	// mongo.close();
-	// return userDto;
-	// }
-
-	public UserDTO save(UserDTO userDto) {
-
-		if (org.apache.commons.lang3.StringUtils.isBlank(userDto.getString("_id"))) {
-			BasicDBObject mongoResult = (BasicDBObject) mongoTemplate.scriptOps().call("getNextSeq",
-					MongoConstants.USER_COLLECTION);
-			String _id = mongoResult.getLong("seq")+"";
-			userDto.put("_id", _id);
+	public Object save(BasicDBObject objectDto, String collectionName) {
+		if (org.apache.commons.lang3.StringUtils.isBlank(objectDto.getString("_id"))) {
+			BasicDBObject mongoResult = (BasicDBObject) mongoTemplate.scriptOps().call("getNextSeq", collectionName);
+			String _id = mongoResult.getLong("seq") + "";
+			objectDto.put("_id", _id);
 		}
-		mongoTemplate.save(userDto, MongoConstants.USER_COLLECTION);
-		return userDto;
+		mongoTemplate.save(objectDto, collectionName);
+		return objectDto;
 	}
 
 }

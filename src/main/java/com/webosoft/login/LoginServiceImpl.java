@@ -3,6 +3,8 @@ package com.webosoft.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webosoft.common.MongoConstants;
+
 @Service
 public class LoginServiceImpl implements LoginService {
 
@@ -10,7 +12,11 @@ public class LoginServiceImpl implements LoginService {
 	private LoginDAO loginDAO;
 
 	public UserDTO register(UserDTO userDto) {
-		return loginDAO.save(userDto);
+		return (UserDTO) loginDAO.save(userDto, MongoConstants.USER_COLLECTION);
+	}
+
+	public SubscribeDTO subscribe(SubscribeDTO subscribeDto) {
+		return (SubscribeDTO) loginDAO.save(subscribeDto, MongoConstants.SUBSCRIBE_COLLECTION);
 	}
 
 }

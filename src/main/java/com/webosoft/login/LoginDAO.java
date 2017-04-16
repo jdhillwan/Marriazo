@@ -1,7 +1,9 @@
 package com.webosoft.login;
 
+import com.mongodb.BasicDBObject;
+
 public interface LoginDAO {
 
-	UserDTO save(UserDTO userDto);
+	Object save(BasicDBObject objectDto, String collectionName);
 
 }
