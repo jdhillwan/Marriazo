@@ -36,11 +36,11 @@ public class LoginDAOImpl implements LoginDAO {
 
 		if (org.apache.commons.lang3.StringUtils.isBlank(userDto.getString("_id"))) {
 			BasicDBObject mongoResult = (BasicDBObject) mongoTemplate.scriptOps().call("getNextSeq",
-					MongoConstants.REGISTER_COLLECTION);
-			long _id = mongoResult.getLong("seq");
+					MongoConstants.USER_COLLECTION);
+			String _id = mongoResult.getLong("seq")+"";
 			userDto.put("_id", _id);
 		}
-		mongoTemplate.save(userDto, MongoConstants.REGISTER_COLLECTION);
+		mongoTemplate.save(userDto, MongoConstants.USER_COLLECTION);
 		return userDto;
 	}
 
