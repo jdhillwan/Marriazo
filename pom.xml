@@ -17,8 +17,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.3.7.RELEASE</version>
 		</dependency>
-		<!-- <dependency> <groupId>com.sun.pdfview</groupId> <artifactId>pdfrenderer</artifactId> 
-			<version>0.9.1</version> </dependency> -->
+		<dependency>
+			<groupId>com.sun.pdfview</groupId>
+			<artifactId>pdfrenderer</artifactId>
+			<version>0.9.1</version>
+		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -63,12 +66,12 @@
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.8.0.RELEASE</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.0</version>
 		</dependency>
-
 
 	</dependencies>
 
