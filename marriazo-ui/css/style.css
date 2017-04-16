@@ -1,0 +1,299 @@
+.primary_color_bg
+{
+    background:#393838;
+}
+.logo
+{
+    height: 90px;
+    position: relative;
+    bottom: 59px;
+    z-index: 2;
+}
+.slider-position{
+    position:absolute;
+}
+.login-padding
+{
+    padding-top: 8px;
+}
+.carousel-inner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
+.slider-caption
+{
+    position:absolute;
+}
+.carousel-caption
+{
+    left:0;
+    right:0;
+}
+.left-bar
+{
+    top: 0px;
+    background: rgba(245, 241, 221, 0.35);
+}
+#custom-search-form {
+    margin: 0;
+    /* margin-top: 18px; */
+    padding: 0;
+    /* margin-bottom: 13px; */
+}
+
+#custom-search-form .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    height: 30px;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 50px;
+    width: 100%;
+    color: #000;
+    border: none;
+    outline:none;
+    border: 1px solid #fff;
+    background: #fff;
+}
+
+#custom-search-form button {
+    border: 0;
+    background: none;
+    padding: 2px 5px;
+    margin-top: 0px;
+    position: relative;
+    left: 98px;
+    /* margin-bottom: -20px; */
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #ccc;
+    bottom: 29px;
+}
+
+.search-query:focus + button {
+    z-index: 3;   
+}
+.social-media {
+    background: #000;
+    position: relative;
+    top: 342px;
+}
+.carousel-inner>.item>img
+{
+    max-width: initial !important;
+}
+.padding-zero
+{
+    padding-left:0;
+    padding-right:0;
+}
+.carousel-caption
+{
+    bottom:0px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.login-btn
+{
+    margin-right: 20px;
+    background: #393838;
+    color: #bfaf67;
+    border-color: #bfaf67;
+}
+.btn-default:hover {
+    color: #393838;
+    background-color: #bfaf67;
+    border-color: #393838;
+}
+.btn-default
+{
+    background: #393838;
+    color: #bfaf67;
+    border-color: #bfaf67;
+}
+.choose
+{
+    font-size: 18px;
+    background: #baab65;
+    padding: 5px 38px;
+    border-radius: 64px;
+    color: #393838;
+    margin-top: 31px;
+}
+.btn-send
+{
+    background: #baab65;
+    color: #393838;
+    border-radius: 64px;
+}
+.social:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+.social {
+    -webkit-transform: scale(0.8);
+    /* Browser Variations: */
+
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+
+/*
+    Multicoloured Hover Variations
+*/
+
+#social-fb:hover {
+    color: #3B5998;
+}
+#social-tw:hover {
+    color: #4099FF;
+}
+#social-gp:hover {
+    color: #d34836;
+}
+#social-em:hover {
+    color: #f39c12;
+}
+a {
+    color: #baab65;
+    text-decoration: none;
+}
+.items li
+{
+    list-style:none;
+    letter-spacing:2px;
+    margin-bottom: 15px;
+}
+.items
+{
+    margin-top:50px;
+}
+.bday_party
+{
+    height: 25px;
+    padding-right: 15px;
+    position: relative;
+    bottom: 6px;
+}
+@media (min-width: 768px) {
+    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 25%;
+    }
+}
+
+.omb_login .omb_authTitle {
+    text-align: center;
+    line-height: 300%;
+}
+
+.omb_login .omb_socialButtons a {
+    color: white; // In yourUse @body-bg 
+    opacity:0.9;
+}
+.omb_login .omb_socialButtons a:hover {
+    color: white;
+    opacity:1;    	
+}
+.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+.omb_login .omb_loginOr {
+    position: relative;
+    font-size: 1.5em;
+    color: #aaa;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.omb_login .omb_loginOr .omb_spanOr {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -0.6em;
+    margin-left: -1.5em;
+    background-color: white;
+    width: 3em;
+    text-align: center;
+}			
+
+.omb_login .omb_loginForm .input-group.i {
+    width: 2em;
+}
+.omb_login .omb_loginForm  .help-block {
+    color: red;
+}
+
+
+@media (min-width: 768px) {
+    .omb_login .omb_forgotPwd {
+        text-align: right;
+        margin-top:10px;
+    }		
+}
+.labels
+{
+    color: #000;
+    font-weight: normal;
+    font-size: 16px !important;
+}
+.footer_bg
+{
+    background: #393838;
+    /*   position: fixed;
+      width: 100%;
+      bottom: 0;	 */
+}
+header
+{
+    position:relative;
+    z-index:999;
+}
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.stars
+{
+    margin: 0px 0 20px 0px;
+    font-size: 24px;
+    color: #e9d914;
+}
+.venue_color
+{
+    color:#bb66b1;
+}
+.venue_address
+{
+    color:rgba(184, 108, 175, 0.7);
+    font-size:20px;
+}
+.starts_count
+{
+    font-size:14px;
+    color:rgba(184, 108, 175, 0.7);
+}
+.star
+{
+    font-size:20px;	
+}
