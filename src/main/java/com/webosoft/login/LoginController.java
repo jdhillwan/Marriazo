@@ -52,4 +52,24 @@ public class LoginController {
 		return responseObj;
 
 	}
+
+	@RequestMapping(value = "/user-profile.rest", method = RequestMethod.POST)
+	public Object subscribe(@RequestBody UserDTO userDto) {
+		ServiceResponse responseObj = new ServiceResponse();
+		try {
+			if (userDto != null) {
+				loginService.register(userDto);
+				responseObj.setData(userDto);
+				responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseObj.setData(userDto);
+			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
+		}
+
+		return responseObj;
+
+	}
+
 }

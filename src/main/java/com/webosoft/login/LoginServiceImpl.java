@@ -19,4 +19,9 @@ public class LoginServiceImpl implements LoginService {
 		return (SubscribeDTO) loginDAO.save(subscribeDto, MongoConstants.SUBSCRIBE_COLLECTION);
 	}
 
+	public UserDTO profile(UserDTO userDto) {
+		// TODO Auto-generated method stub
+		return (UserDTO) loginDAO.save(userDto, MongoConstants.USER_COLLECTION);
+	}
+
 }
