@@ -9,7 +9,7 @@ angular.module('MarriazoApp').controller('SubscribeFormController',
 			scope.register = function() {
 				$http({
 					method : "POST",
-					url : "../marriazo-portal/register.rest",
+					url : "../marriazo-portal/subscribe.rest",
 					data : scope.user
 				}).then(function(response) {
 					alert("User Successfully Registered");
