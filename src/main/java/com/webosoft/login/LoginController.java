@@ -23,11 +23,13 @@ public class LoginController {
 				loginService.register(userDto);
 				responseObj.setData(userDto);
 				responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
+				responseObj.setResponse("User Registered Successfully");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseObj.setData(userDto);
 			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
+			responseObj.setResponse(e.getMessage());
 		}
 
 		return responseObj;

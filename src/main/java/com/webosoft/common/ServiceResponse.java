@@ -10,6 +10,15 @@ public class ServiceResponse implements Serializable {
 
 	private Object data;
 	private String status;
+	private String response;
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
+	}
 
 	public Object getData() {
 		return data;

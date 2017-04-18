@@ -1,7 +1,10 @@
 package com.webosoft.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.BasicDBObject;
@@ -20,6 +23,10 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 		mongoTemplate.save(objectDto, collectionName);
 		return objectDto;
+	}
+	
+	public List<UserDTO> fetchUsers(Query query, String collectionName) {
+		return mongoTemplate.find(query, UserDTO.class, collectionName);
 	}
 
 }

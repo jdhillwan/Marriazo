@@ -2,10 +2,9 @@ package com.webosoft.login;
 
 public interface LoginService {
 
-	UserDTO register(UserDTO userDto);
+	Object register(UserDTO userDto) throws Exception;
 
 	SubscribeDTO subscribe(SubscribeDTO subscribeDto);
-	
-	UserDTO profile(UserDTO userDto);
 
+	UserDTO profile(UserDTO userDto);
 }
