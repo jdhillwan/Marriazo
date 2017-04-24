@@ -52,7 +52,7 @@ and open the template in the editor.
     float: left;
     margin-right: 12px;
     line-height: 30px;
-    background:url('images/checked.png'); 
+    background:url('../images/checked.png'); 
 }
 .grid-item{margin-bottom: 20px;}
 .grid-images img{max-width: 100%;}

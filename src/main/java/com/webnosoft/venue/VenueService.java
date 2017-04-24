@@ -1,9 +1,10 @@
 package com.webnosoft.venue;
 
+import com.mongodb.BasicDBObject;
 import com.webosoft.common.FilterDTO;
 
 public interface VenueService {
 
-	Object getVenue(FilterDTO filterDto);
+	Object getVenue(BasicDBObject searchParams);
 
 }

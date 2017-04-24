@@ -3,8 +3,9 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "home.html"
     })
-    .when("/red", {
-        templateUrl : "red.htm"
+    .when("/search/banquet/:state/:city", {
+        templateUrl : "resources/views/search-results.tpl.html",
+        controller: "SearchController"
     })
     .when("/green", {
         templateUrl : "green.htm"

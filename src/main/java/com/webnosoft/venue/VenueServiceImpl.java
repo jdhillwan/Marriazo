@@ -3,7 +3,7 @@ package com.webnosoft.venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webosoft.common.FilterDTO;
+import com.mongodb.BasicDBObject;
 
 @Service
 public class VenueServiceImpl implements VenueService {
@@ -11,8 +11,9 @@ public class VenueServiceImpl implements VenueService {
 	@Autowired
 	private VenueDAO venueDAO;
 
-	public Object getVenue(FilterDTO filterDto) {
-		return venueDAO.searchVenue(filterDto);
+	public Object getVenue(BasicDBObject searchParams) {
+		// TODO Auto-generated method stub
+		return venueDAO.searchVenue(searchParams);
 	}
 
 }
