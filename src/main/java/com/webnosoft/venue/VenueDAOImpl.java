@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,14 @@ public class VenueDAOImpl implements VenueDAO {
 	protected MongoOperations mongoTemplate;
 
 	public Object searchVenue(BasicDBObject searchParams) {
-		Query query = new Query();
+		Criteria criteria = new Criteria();
+		if(searchParams.get("state") != null){
+			criteria.and("state").is(searchParams.getString("state"));
+		}
+		if(searchParams.get("city") != null){
+			criteria.and("city").is(searchParams.getString("city"));
+		}
+		Query query = new Query(criteria);
 		if(searchParams.get("pageSize")!=null){
 			query.limit(searchParams.getInt("pageSize"));
 		}

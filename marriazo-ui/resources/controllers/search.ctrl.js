@@ -11,7 +11,7 @@ angular.module('MarriazoApp').controller('SearchController',
 				$http({
 					method : "POST",
 					url : "../marriazo-portal/venue/fetch-all.rest",
-					data : {}
+					data : {"state" : scope.state, "city" : scope.city}
 				}).then(function(response) {
 					scope.venues = response.data.data;
 					//console.log(JSON.stringify(scope.venues));
