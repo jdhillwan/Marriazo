@@ -1,21 +1,21 @@
-angular.module('MarriazoApp').controller('SubscribeFormController',
-		[ '$rootScope', '$scope', '$http', function(rootScope, scope, $http) {
+angular.module('MarriazoApp').controller(
+		'SubscribeFormController',
+		[ '$rootScope', '$scope', '$http', '$location',
+				function(rootScope, scope, $http, location) {
 
-			scope.initializeAsset = function() {
-				scope.cityList = {"Punjab" : ["Mohali", "Chandigarh", "Panchkula"], "Haryana" : ["Gurgaon", "Rohtak"], "Goa" : ["Goa"]}
-				scope.stateList = Object.keys(scope.cityList);
-			}
-			
-			scope.register = function() {
-				$http({
-					method : "POST",
-					url : "../marriazo-portal/subscribe.rest",
-					data : scope.user
-				}).then(function(response) {
-					alert("User Successfully Registered");
-				});
-			}
-			
-			scope.initializeAsset();
-			
-		} ]);
+					scope.initializeAsset = function() {
+						scope.cityList = {
+							"Punjab" : [ "Mohali", "Chandigarh", "Panchkula" ],
+							"Haryana" : [ "Gurgaon", "Rohtak" ],
+							"Goa" : [ "Goa" ]
+						}
+						scope.stateList = Object.keys(scope.cityList);
+					}
+
+					scope.search = function(city, state) {
+						location.path('search/banquet/' + state + '/' + city);
+					}
+
+					scope.initializeAsset();
+
+				} ]);
