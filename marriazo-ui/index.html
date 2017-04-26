@@ -6,10 +6,10 @@
 <script src="js/angular.min.js"></script>
 <script src="js/angular-route.js"></script>
 <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
-<!-- <script src="js/angular-social.js"></script> -->
+<script src="js/angular-social.js"></script>
 
 <script src="resources/app.js"></script>
-<script src="resources/app.routes.js"></script>
+<!-- <script src="resources/app.routes.js"></script> -->
 <script src="resources/app.ctrl.js"></script>
 
 <script src="resources/controllers/search.ctrl.js"></script>
@@ -22,6 +22,13 @@
 <script src="resources/directives/subscribeForm.directive.js"></script>
 <script src="resources/controllers/subscribeForm.ctrl.js"></script>
 
+<script src="js/ui-notification/angular-toastr.tpls.min.js"></script>
+<script src="js/ui-notification/angular-ui-notification.min.js"></script>
+<script src="js/notification.service.js"></script>
+
+
+
+
 <title>Marriazo | Home</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/marriazo.css" rel="stylesheet" type="text/css" />
@@ -31,6 +38,10 @@
 	rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
+
+<link href="css/angular-ui-notification.min.css" rel="stylesheet"
+	type="text/css">
+<link href="css/angular-toastr.min.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-app="MarriazoApp" ng-controller="AppController">
 	<ng-include src="'header.tpl.html'"></ng-include>
