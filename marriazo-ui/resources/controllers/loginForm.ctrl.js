@@ -4,11 +4,9 @@ angular.module('MarriazoApp').controller(
 				'$rootScope',
 				'$scope',
 				'$http',
-				function(rootScope, scope, $http) {
-
-					scope.login = function() {
-						console.log("login function called");
-					}
+				'$location',
+				'NotificationService',
+				function(rootScope, scope, $http, location,NotificationService) {
 
 					rootScope.$on('event:social-sign-in-success', function(
 							event, userDetails) {
@@ -18,8 +16,10 @@ angular.module('MarriazoApp').controller(
 								url : "../marriazo-portal/user-profile.rest",
 								data : userDetails
 							}).then(function(response) {
-								alert("Profile Successfully Saved");
-
+								NotificationService.success("success","successfully logged in");
+								scope.$parent.closeModal();
+								location.path('/');// temporary code need to
+													// set it in fb account
 							});
 						}
 					});
