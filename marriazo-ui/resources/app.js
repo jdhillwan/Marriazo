@@ -15,8 +15,9 @@ app
 			}).when("/search/banquet/:state/:city", {
 				templateUrl : "resources/views/search-results.tpl.html",
 				controller : "SearchController"
-			}).when("/green", {
-				templateUrl : "green.htm"
+			}).when("/userprofile", {
+				templateUrl : "resources/views/user-profile.tpl.html",
+				controller : "UserProfileFormController"
 			}).when("/blue", {
 				templateUrl : "blue.htm"
 			}).otherwise("/");
