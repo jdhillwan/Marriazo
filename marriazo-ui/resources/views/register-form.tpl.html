@@ -11,7 +11,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-user icon_clr"></i></span> <input class="form-control"
-								ng-model="user.name" placeholder="Name">
+								ng-model="user.name" placeholder="Full Name" required>
 						</div>
 						<span class="help-block"></span>
 					</div>
@@ -21,6 +21,7 @@
 							<span class="input-group-addon"><i
 								class="fa fa-user-circle-o icon_clr"></i></span> <select
 								class="form-control" ng-model="user.gender">
+								<option value="" disabled>Gender</option>
 								<option value="M">Male</option>
 								<option value="F">Female</option>
 							</select>
@@ -32,7 +33,7 @@
 							<span class="input-group-addon"><i
 								class="fa fa-phone icon_clr"></i></span> <input type="text"
 								class="form-control" ng-model="user.mobile"
-								placeholder="Mobile no.">
+								placeholder="Mobile no." required>
 						</div>
 						<span class="help-block"></span>
 					</div>
@@ -50,7 +51,8 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-birthday-cake icon_clr"></i></span> <input type="text"
-								class="form-control" ng-model="user.DOB" placeholder="B'day">
+								class="form-control" ng-model="user.DOB" placeholder="B'day"
+								required>
 						</div>
 						<span class="help-block"></span>
 					</div>
@@ -64,7 +66,7 @@
 						<span class="help-block"></span>
 					</div>
 
-					<div style="padding-left: 0;" class="col-md-6 col-sm-6 col-xs-6">
+					<!-- <div style="padding-left: 0;" class="col-md-6 col-sm-6 col-xs-6">
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-user icon_clr"></i></span> <input type="text"
@@ -82,7 +84,7 @@
 								placeholder="Children b'day">
 						</div>
 						<span class="help-block"></span>
-					</div>
+					</div> -->
 
 					<div style="padding-left: 0;" class="col-md-6 col-sm-6 col-xs-6">
 						<div class="input-group">
@@ -97,7 +99,8 @@
 					<div style="padding-right: 0;" class="col-md-6 col-sm-6 col-xs-6">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="fa fa-lock icon_clr"></i></span> <input type="password"
+								class="fa fa-lock icon_clr"></i></span> <input
+								ng-model="user.confirmPassword" type="password"
 								class="form-control" placeholder="Re-Enter-Password">
 						</div>
 						<span class="help-block"></span>
@@ -133,7 +136,8 @@
 
 
 					<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-						<button class="btn btn-lg btn-block marizo_btn" ng-click="register()">Sign Up</button>
+						<button class="btn btn-lg btn-block marizo_btn"
+							ng-click="register()">Sign Up</button>
 					</div>
 				</form>
 			</div>
