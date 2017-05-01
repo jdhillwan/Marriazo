@@ -7,6 +7,8 @@ angular.module('MarriazoApp').controller('SearchController',
 				scope.fetchVenues();
 			}
 			
+			scope.min=100;
+			scope.max =1000;
 			scope.fetchVenues = function() {
 				$http({
 					method : "POST",
@@ -14,8 +16,13 @@ angular.module('MarriazoApp').controller('SearchController',
 					data : {"state" : scope.state, "city" : scope.city}
 				}).then(function(response) {
 					scope.venues = response.data.data;
+					$('#price_range').slider({});
 					//console.log(JSON.stringify(scope.venues));
 				});
+			}
+			
+			scope.changePriceRange = function() {
+				alert("Changed");
 			}
 			
 			scope.initializeAsset();

@@ -19,22 +19,25 @@
 				<div class="panel panel-default budget-container">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							BUDGET <span class="pull-right panel-collapse-clickable"
+							BUDGET {{min + '-' + max}}<span class="pull-right panel-collapse-clickable"
 								data-toggle="collapse" data-parent="#accordion"
 								href="#filterPanel"> <i
 								class="glyphicon glyphicon-triangle-top"></i>
 							</span>
 						</h4>
 					</div>
+
 					<div id="filterPanel"
 						class="panel-collapse panel-collapse collapse in">
 						<div class="panel-body">
-							<input id="budget" type="text" class="span2" value=""
-								data-slider-min="50000" data-slider-max="2050000"
-								data-slider-step="5" data-slider-value="[621434,1554600]" />
+						<div class="row">
+								<div class="col-md-2 mt-15">100</div>
+								<div class="col-md-2 mt-15 pull-right">10000</div>
+						</div>
 							<div class="row">
-								<div class="col-xs-6 text-left">Rs: 50,000</div>
-								<div class="col-xs-6 text-right">Rs: 20,50,000</div>
+								<div range-slider min="100" max="10000" model-min="min"
+									model-max="max" on-handle-up="changePriceRange()"
+									class="col-md-12"></div>
 							</div>
 						</div>
 					</div>
@@ -131,8 +134,9 @@
 			</div>
 			<div class="row search-results">
 				<div class="col-xs-12">
-					43 RESULTS <span class="filter">Rs: 50,000 - Rs: 2,50,000</span> <span
-						class="filter">5 Star</span> <span class="filter">Chandigarh</span>
+					{{venues.length}} RESULT(S) <span class="filter">Rs: 50,000
+						- Rs: 2,50,000</span> <span class="filter">5 Star</span> <span
+						class="filter">{{city}}</span>
 				</div>
 			</div>
 			<div class="row">
@@ -152,10 +156,11 @@
 									<small>INCLUDES</small>
 									<div class="mt-5">
 										<i class="material-icons"
-											ng-if="venue.facilities.indexOf('spa')!=-1" uib-tooltip="Spa">spa</i> <i
-											class="material-icons"
-											ng-if="venue.facilities.indexOf('pool')!=-1" uib-tooltip="Pool">pool</i>
-											<i class="material-icons" ng-if="venue.facilities.indexOf('Ac')!=-1" uib-tooltip="AC">featured_play_list</i>
+											ng-if="venue.facilities.indexOf('spa')!=-1" uib-tooltip="Spa">spa</i>
+										<i class="material-icons"
+											ng-if="venue.facilities.indexOf('pool')!=-1"
+											uib-tooltip="Pool">pool</i> <i class="material-icons"
+											ng-if="venue.facilities.indexOf('Ac')!=-1" uib-tooltip="AC">featured_play_list</i>
 									</div>
 								</div>
 								<div class="col-xs-6">

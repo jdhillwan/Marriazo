@@ -1,4 +1,4 @@
-var app = angular.module('MarriazoApp', [ 'socialLogin','ui.bootstrap', 'ngRoute','toastr','ui-notification']);
+var app = angular.module('MarriazoApp', [ 'socialLogin','ui.bootstrap', 'ngRoute','toastr','ui-notification', 'ui-rangeSlider']);
 
 app
 		.config(function(socialProvider, $routeProvider) {
