@@ -8,12 +8,14 @@ angular.module('MarriazoApp').controller('SearchController',
 			}
 			
 			scope.min=100;
-			scope.max =1000;
+			scope.max =100000;
 			scope.fetchVenues = function() {
+				var params = {"state" : scope.state, "city" : scope.city};
+				params.price_range = {"min" : scope.min, "max" : scope.max};
 				$http({
 					method : "POST",
 					url : "../marriazo-portal/venue/fetch-all.rest",
-					data : {"state" : scope.state, "city" : scope.city}
+					data : params
 				}).then(function(response) {
 					scope.venues = response.data.data;
 					$('#price_range').slider({});
@@ -22,7 +24,7 @@ angular.module('MarriazoApp').controller('SearchController',
 			}
 			
 			scope.changePriceRange = function() {
-				alert("Changed");
+				scope.fetchVenues();
 			}
 			
 			scope.initializeAsset();

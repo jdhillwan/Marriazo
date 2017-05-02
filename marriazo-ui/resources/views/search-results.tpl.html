@@ -32,10 +32,10 @@
 						<div class="panel-body">
 						<div class="row">
 								<div class="col-md-2 mt-15">100</div>
-								<div class="col-md-2 mt-15 pull-right">10000</div>
+								<div class="col-md-2 mt-15 pull-right">100000</div>
 						</div>
 							<div class="row">
-								<div range-slider min="100" max="10000" model-min="min"
+								<div range-slider min="100" max="100000" model-min="min"
 									model-max="max" on-handle-up="changePriceRange()"
 									class="col-md-12"></div>
 							</div>
@@ -134,8 +134,8 @@
 			</div>
 			<div class="row search-results">
 				<div class="col-xs-12">
-					{{venues.length}} RESULT(S) <span class="filter">Rs: 50,000
-						- Rs: 2,50,000</span> <span class="filter">5 Star</span> <span
+					{{venues.length}} RESULT(S) <span class="filter">Rs: {{min}}
+						- Rs: {{max}}</span> <span class="filter">5 Star</span> <span
 						class="filter">{{city}}</span>
 				</div>
 			</div>
@@ -166,7 +166,7 @@
 								<div class="col-xs-6">
 									<small>Price</small>
 									<div>
-										<h4 class="grid-price">Rs: {{venue.price_range}}</h4>
+										<h4 class="grid-price">Rs: {{venue.price}}</h4>
 										<small>per person</small>
 									</div>
 								</div>
