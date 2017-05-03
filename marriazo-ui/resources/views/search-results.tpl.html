@@ -19,7 +19,8 @@
 				<div class="panel panel-default budget-container">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							BUDGET {{min + '-' + max}}<span class="pull-right panel-collapse-clickable"
+							BUDGET {{min + '-' + max}}<span
+								class="pull-right panel-collapse-clickable"
 								data-toggle="collapse" data-parent="#accordion"
 								href="#filterPanel"> <i
 								class="glyphicon glyphicon-triangle-top"></i>
@@ -30,10 +31,10 @@
 					<div id="filterPanel"
 						class="panel-collapse panel-collapse collapse in">
 						<div class="panel-body">
-						<div class="row">
+							<div class="row">
 								<div class="col-md-2 mt-15">100</div>
 								<div class="col-md-2 mt-15 pull-right">100000</div>
-						</div>
+							</div>
 							<div class="row">
 								<div range-slider min="100" max="100000" model-min="min"
 									model-max="max" on-handle-up="changePriceRange()"
@@ -115,19 +116,36 @@
 					<h3>Show prices according to the input below</h3>
 					<form class="form-horizontal">
 						<div class="col-xs-12 col-sm-6 text-center">
-							<label style="font-weight: normal;"> CAPACITY <select
-								class="selector">
+							<div class="col-sm-4 col-xs-12">
+								<label style="font-weight: normal;"> CAPACITY </label>
+							</div>
+							<div class="col-sm-8 col-xs-12">
+								<select class="form-control">
 									<option>50 People</option>
 									<option>100 People</option>
 									<option>150 People</option>
 									<option>200 People</option>
-							</select>
-							</label>
+								</select>
+							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 text-center">
-							<label style="font-weight: normal;"> BOOKING DATE <input
-								type="text" class="selector" />
-							</label>
+							<div class="col-sm-4">
+								<label style="font-weight: normal;"> BOOKING DATE</label>
+							</div>
+							<div class="col-sm-8">
+								<p class="input-group">
+									<input type="text" class="form-control"
+										datepicker-popup="'dd-MMMM-yyyy'" ng-model="dt"
+										is-open="opened" datepicker-options="dateOptions"
+										ng-required="true" close-text="Close" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="open($event)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
 						</div>
 					</form>
 				</div>
