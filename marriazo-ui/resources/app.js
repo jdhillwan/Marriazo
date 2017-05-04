@@ -1,4 +1,4 @@
-var app = angular.module('MarriazoApp', [ 'socialLogin','ui.bootstrap', 'ngRoute','toastr','ui-notification', 'ui-rangeSlider']);
+var app = angular.module('MarriazoApp', [ 'socialLogin','ui.bootstrap', 'ngRoute','toastr','ui-notification', 'ui-rangeSlider','oc.lazyLoad']);
 
 /*app
 		.config(function(socialProvider, $routeProvider) {
@@ -14,7 +14,8 @@ var app = angular.module('MarriazoApp', [ 'socialLogin','ui.bootstrap', 'ngRoute
 				templateUrl : "home.html"
 			}).when("/search/banquet/:state/:city", {
 				templateUrl : "resources/views/search-results.tpl.html",
-				controller : "SearchController"
+				controller : "resources/controllers/search.ctrl.js",
+				controllerAs : "SearchController"
 			}).when("/userprofile", {
 				templateUrl : "resources/views/user-profile.tpl.html",
 				controller : "UserProfileFormController"
