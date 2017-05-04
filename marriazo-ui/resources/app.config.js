@@ -159,6 +159,19 @@ app
                                   }]
                             }
                       })
+                     .when("/venueDetails/:venueId", {
+                    templateUrl: "resources/views/singleVenueDetails.tpl.html",
+                    controller: "VenueDetailsController",
+                    resolve: {
+                      lazyTestCtrl: [
+                          '$ocLazyLoad',
+                          function($ocLazyLoad) {
+                            return $ocLazyLoad
+                                    .load(['resources/controllers/venueDetails.ctrl.js']);
+                          }]
+                    }
+                  })
+                      
                   .otherwise("/");
 
         });

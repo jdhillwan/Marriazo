@@ -22,6 +22,9 @@ public class VenueDAOImpl implements VenueDAO {
 	@SuppressWarnings("unchecked")
 	public Object searchVenue(BasicDBObject searchParams) {
 		Criteria criteria = new Criteria();
+		if (searchParams.get("_id") != null) {
+			criteria.and("_id").is(Integer.parseInt(searchParams.get("_id").toString()));
+		}
 		if (searchParams.get("state") != null) {
 			criteria.and("state").is(searchParams.getString("state"));
 		}
