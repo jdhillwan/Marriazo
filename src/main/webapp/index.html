@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Marriazo</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+	
+/* form starting stylings ------------------------------- */
+.group {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+input {
+    font-size: 18px;
+    padding: 5px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+}
+
+    input:focus {
+        outline: none;
+    }
+
+/* LABEL ======================================= */
+label {
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #fff;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 50%;
+    }
+
+    .bar:after {
+        right: 50%;
+    }
+
+
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #fff;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #fff;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #fff;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+
+#panel {
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: -webkit-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); /* Standard syntax (must be last) */
+    
+    
+    border-radius: 4px;
+    top: 50px;
+}
+.clearfix{
+clear:both;
+}
+</style>
+  </head>
+  <body>
+   <header>
+   <section style="    height: 50px;" class="primary_color_bg">
+   <div class="container-fluid">
+   <div class="col-md-12 col-sm-12 col-xs-12 login-padding">
+  <div class="col-md-2 col-sm-2">
+   <form id="custom-search-form" class="form-search form-horizontal ">
+                <div class="input-append span12">
+				
+                    <input style="font-size:14px;" type="text" class="search-query text-center " placeholder="Search">
+                   <!--  <button type="submit" class="btn"><span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span></button> -->
+                </div>
+            </form>
+  </div>
+   <div class="col-md-10 col-sm-10">
+   <button type="button" class="btn btn-default pull-right"  data-toggle="modal" data-target="#signup">SIGN UP </button>
+    <!-- sign up Modal -->
+  <div class="modal fade" id="signup" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center omb_authTitle">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+         <!-- model body start -->
+    
+
+    <div class="omb_login">
+		
+
+		
+
+		<div class="row">
+			<div class="col-sm-offset-1 col-xs-12 col-sm-10">	
+			    <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+					<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="Name">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Gender">
+					</div>
+                    <span class="help-block"></span>
+</div>
+					<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="Mobile no.">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Email">
+					</div>
+                    <span class="help-block"></span>
+</div>
+		
+							<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="B'day">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Wedding Anniversary">
+					</div>
+                    <span class="help-block"></span>
+</div>
+		
+							<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="Spouse B'day">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Children b'day">
+					</div>
+                    <span class="help-block"></span>
+</div>
+		
+							<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="Password">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Re-Enter-Password">
+					</div>
+                    <span class="help-block"></span>
+</div>
+		
+							<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="Address">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="City">
+					</div>
+                    <span class="help-block"></span>
+</div>
+		
+							<div style="padding-left:0;" class="col-md-6 col-sm-6 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="State">
+					</div>
+					<span class="help-block"></span>
+					</div>
+					
+						<div style="padding-right:0;" class="col-md-6 col-sm-6 col-xs-6">				
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Password">
+					</div>
+                    <span class="help-block"></span>
+</div>
+		
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+				</form>
+			</div>
+    	</div>	    	
+	</div>
+		 <!-- model body end -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+	<!--sign up model end-->
+   <button  type="button" class="btn btn-default pull-right login-btn" data-toggle="modal" data-target="#myModal"> LOGIN</button>
+   </div>
+   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center omb_authTitle">Login</h4>
+        </div>
+        <div class="modal-body">
+         <!-- model body start -->
+    
+
+    <div class="omb_login">
+		<div class="row omb_row-sm-offset-2 omb_socialButtons">
+    	    <div class="col-xs-4 col-sm-4">
+		        <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+			        <i class="fa fa-facebook visible-xs"></i>
+			        <span class="hidden-xs">Facebook</span>
+		        </a>
+	        </div>
+        	<div class="col-xs-4 col-sm-4">
+		        <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+			        <i class="fa fa-twitter visible-xs"></i>
+			        <span class="hidden-xs">Twitter</span>
+		        </a>
+	        </div>	
+        	<div class="col-xs-4 col-sm-4">
+		        <a href="#" class="btn btn-lg btn-block omb_btn-google">
+			        <i class="fa fa-google-plus visible-xs"></i>
+			        <span class="hidden-xs">Google+</span>
+		        </a>
+	        </div>	
+		</div>
+
+		<div class="row omb_row-sm-offset-3 omb_loginOr">
+			<div class="col-xs-12 col-sm-6">
+				<hr class="omb_hrOr">
+				<span class="omb_spanOr">or</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-offset-1 col-xs-12 col-sm-10">	
+			    <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control" name="username" placeholder="email address">
+					</div>
+					<span class="help-block"></span>
+										
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control" name="password" placeholder="Password">
+					</div>
+                    <span class="help-block">Password error</span>
+
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+				</form>
+			</div>
+    	</div>
+		<div class="row ">
+			<div class="col-xs-12 col-sm-offset-1 col-sm-5">
+			<form>
+			<div style="margin-top:10px;"><input style="position:absolute;" type="checkbox" name="Remember" checked>Remember Me</div>
+				
+			</form>
+				
+			</div>
+			<div class="col-xs-12 col-sm-5">
+				<p class="omb_forgotPwd">
+					<a href="#">Forgot password?</a>
+				</p>
+			</div>
+		</div>	    	
+	</div>
+		 <!-- model body end -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+	<!-- model end-->
+   </div>
+   </div>
+   </section>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+   <a href="index.html"><img class="logo center-block" src="images/logo.png"></a>
+   </div>
+   </header>
+
+<!-- <img class="img-responsive slider-position" src="images/slide1.jpg"> -->
+<div class="bs-example" data-example-id="carousel-with-captions"> 
+<div class="carousel slide" id="carousel-example-captions" data-ride="carousel">
+<!--  <ol class="carousel-indicators"> <li data-target="#carousel-example-captions" data-slide-to="0" class=""></li> 
+ <li data-target="#carousel-example-captions" data-slide-to="1" class="active"></li> 
+ <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li> </ol>  -->
+ <div class="carousel-inner" role="listbox"> 
+ <div class="item"> 
+ <img alt="900x500" data-src="holder.js/900x500/auto/#777:#777" src="images/slide1.jpg" data-holder-rendered="true"> 
+ </div>
+ <div class="item active"> <img alt="900x500" data-src="holder.js/900x500/auto/#666:#666" src="images/slide1.jpg" data-holder-rendered="true"> 
+</div>
+ <div class="item"> 
+ <img alt="900x500" data-src="holder.js/900x500/auto/#555:#555" src="images/slide1.jpg" data-holder-rendered="true"> 
+</div>
+  <div class="slider-caption carousel-caption">
+<div class="col-md-3 col-sm-3 col-xs-12 left-bar text-left padding-zero">
+            <div style="background:#777060;" class="col-md-12 col-sm-12 col-xs-12">
+			<!-- search box-->
+			</div>
+			<div style="margin-top: 25px;" class="col-md-12 col-sm-12 col-xs-12">
+
+        <form id="laft-bar-formlaft-bar-form">
+<p class="text-center"><span class="choose">Choose your</span></p>
+            <div class="group">
+                <input type="text" required>
+				
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="labels">State</label>
+            </div>
+
+            <div class="group">
+                <input type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="labels">City</label>
+            </div>
+
+            <div class="group">
+                <input type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="labels">Mobile no.</label>
+            </div>
+			<div class="group">
+                <input type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="labels">Email id</label>
+            </div>
+            <div class="group">
+                <center> <button type="submit" class="btn btn-send">Save <span class="glyphicon glyphicon-send"></span></button></center>
+            </div>
+        </form>
+</div>
+</div>
+<div class="col-md-6 col-sm-6  col-xs-12 text-left">
+<h3 class="text-center" style="letter-spacing: 7px;padding-top: 85px;"><i><span style="color:#baab65; font-size:50px;">W</span> edding <span style="color:#baab65;font-size:50px;">P</span>
+ lanning <br>Checklist and Booking</i></h3>
+ <p class="text-center" style="letter-spacing:3px;padding-top:30px;"><i>Planning a wedding a lot of work. Here ia a list to get you</br>  started. No two weddings are alike, so edit the list to</br> make 
+ your perfect wedding planner.</i></p>
+</div>
+ </div>  
+ </div><!--  <a href="#carousel-example-captions" class="left carousel-control" role="button" data-slide="prev">
+ <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> 
+ <a href="#carousel-example-captions" class="right carousel-control" role="button" data-slide="next">
+ <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> -->  </div> </div>
+<div class="clearfix"></div>
+<section class="social-media">
+<div class="container-fluid">
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+
+<div style="padding: 10px 0px 10px 0;" class="text-center pull-right">
+                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+	            <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+
+</div>
+</div>
+</div>
+</section>
+<section class="social-media">
+<div class="container-fluid padding-zero">
+<div class="col-md-12 col-sm-12 col-xs-12 padding-zero">
+<div style="background:#f5f1dd;" class="col-md-6 col-sm-6 col-xs-12 ">
+<h2 class="text-center"><span style="border-bottom:2px solid #c2707e;    padding-bottom: 5px;">Marriage</span></h2>
+<ul class="items">
+<li><img class="bday_party" src="images/venue.png">Wedding Venue's</li>
+<li><img class="bday_party" src="images/flower.png">Flower Decoration</li>
+<li><img class="bday_party" src="images/invitation.jpg">Invitation Card </li>
+<li><img class="bday_party" src="images/cater.png">Cater's</li>
+<li><img class="bday_party" src="images/cake.png">Photographer</li>
+</ul>
+</div>
+<div style="background:#fff;" class="col-md-6 col-sm-6 col-xs-12 ">
+<h2 class="text-center"><span style="border-bottom:2px solid #c47544;padding-bottom: 5px;">Small Parties Venue</span></h2>
+<ul class="items">
+<li><img class="bday_party" src="images/cake.png">Birthday Party</li>
+<li><img class="bday_party" src="images/anniversary.png">Wedding Anniversary</li>
+<li><img class="bday_party" src="images/kitty.png">Kitty </li>
+<li><img class="bday_party" src="images/family.png">Family get to gather</li>
+<li><img class="bday_party" src="images/cake.png">Other</li>
+</ul>
+
+</div>
+</div>
+</div>
+</section>
+<section class="social-media">
+<div class="container-fluid">
+<div style="font-size:18px;color:#fff;padding: 10px 0px;padding-left: 15px;" class="col-md-6 col-sm-6 col-xs-12"><span style="color:#baab65">Contact Us:</span> 0162-567890, 0162-567880</div>
+<div style="font-size:18px;color:#fff;padding: 10px 0px;padding-right: 15px;" class="col-md-6 col-sm-6 col-xs-12 text-right"><span style="color:#baab65">E-mail:</span> Marriazo@gmail.com</div>
+</div>
+</section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
