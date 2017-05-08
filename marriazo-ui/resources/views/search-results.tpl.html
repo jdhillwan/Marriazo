@@ -115,36 +115,40 @@
 					<br /> <br />
 					<h3>Show prices according to the input below</h3>
 					<form class="form-horizontal">
-						<div class="col-xs-12 col-sm-6 text-center">
-							<div class="col-sm-4 col-xs-12">
-								<label style="font-weight: normal;"> CAPACITY </label>
-							</div>
-							<div class="col-sm-8 col-xs-12">
-								<select class="form-control">
-									<option>50 People</option>
-									<option>100 People</option>
-									<option>150 People</option>
-									<option>200 People</option>
-								</select>
+						<div class="col-xs-12 col-sm-3 text-center">
+							<div class="row">
+								<div class="col-sm-4 col-xs-12">
+									<label style="font-weight: normal;"> CAPACITY </label>
+								</div>
+								<div class="col-sm-8 col-xs-12">
+									<select class="form-control">
+										<option>50 People</option>
+										<option>100 People</option>
+										<option>150 People</option>
+										<option>200 People</option>
+									</select>
+								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 text-center">
-							<div class="col-sm-4">
-								<label style="font-weight: normal;"> BOOKING DATE</label>
-							</div>
-							<div class="col-sm-8">
-								<p class="input-group">
-									<input type="text" class="form-control"
-										datepicker-popup="'dd-MMMM-yyyy'" ng-model="dt"
-										is-open="opened" datepicker-options="dateOptions"
-										ng-required="true" close-text="Close" /> <span
-										class="input-group-btn">
-										<button type="button" class="btn btn-default"
-											ng-click="open($event)">
-											<i class="glyphicon glyphicon-calendar"></i>
-										</button>
-									</span>
-								</p>
+						<div class="col-xs-12 col-sm-9 text-center">
+							<div class="row">
+								<div class="col-sm-3">
+									<label style="font-weight: normal;"> BOOKING DATE</label>
+								</div>
+								<div class="col-sm-9">
+									<p class="input-group">
+										<input type="text" class="form-control"
+											datepicker-popup="'dd-MMMM-yyyy'" ng-model="dt"
+											is-open="opened" datepicker-options="dateOptions"
+											ng-required="true" close-text="Close" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="open($event)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
 							</div>
 						</div>
 					</form>
@@ -451,7 +455,7 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/bootstrap-slider.js" type="text/javascript"></script>
 <script type="text/javascript">
-  $(document).ready(function() {
-    $("#budget").slider();
-  });
+	$(document).ready(function() {
+		$("#budget").slider();
+	});
 </script>
