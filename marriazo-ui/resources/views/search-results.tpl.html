@@ -132,18 +132,30 @@
 						</div>
 						<div class="col-xs-12 col-sm-9 text-center">
 							<div class="row">
-								<div class="col-sm-3">
+								<div class="col-sm-4 text-right">
 									<label style="font-weight: normal;"> BOOKING DATE</label>
 								</div>
-								<div class="col-sm-9">
+								<div class="col-sm-4">
 									<p class="input-group">
 										<input type="text" class="form-control"
-											datepicker-popup="'dd-MMMM-yyyy'" ng-model="dt"
-											is-open="opened" datepicker-options="dateOptions"
-											ng-required="true" close-text="Close" /> <span
-											class="input-group-btn">
+											uib-datepicker-popup="MM/dd/yyyy" ng-model="startDate"
+											ng-required="true" close-text="Close" is-open="popup1.opened" />
+										<span class="input-group-btn">
 											<button type="button" class="btn btn-default"
-												ng-click="open($event)">
+												ng-click="open1($event)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+								<div class="col-sm-4">
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="MM/dd/yyyy" ng-model="endDate"
+											is-open="popup2.opened" ng-required="true" close-text="Close" />
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="open2($event)">
 												<i class="glyphicon glyphicon-calendar"></i>
 											</button>
 										</span>
