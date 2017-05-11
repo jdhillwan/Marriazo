@@ -3,20 +3,11 @@ angular.module('MarriazoApp').controller(
 		[ '$rootScope', '$scope', '$http', '$uibModal',
 				function(rootScope, scope, $http, uibModal) {
 
+					scope.buttonText = "Log In";
 					scope.initializeAsset = function() {
-
-					}
-
-					scope.loadSignUpForm = function() {
-						scope.modalInstance = uibModal.open({
-							animation : true,
-							template : "<register-form></register-form>",
-							size : 'lg',
-							scope : scope
-						});
-						scope.modalInstance.result.then(function() {
-						}, function() {
-						});
+						if (rootScope.sessionLoggedin) {
+							scope.buttonText = "Log In";
+						}
 					}
 
 					scope.loadLoginForm = function() {

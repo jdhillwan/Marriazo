@@ -15,11 +15,9 @@
 		</div>
 		<!-- account -->
 		<div class="col-xs-12 col-sm-4 text-right xs-center">
-			<button type="button" class="btn btn-signin"
-				ng-click="loadLoginForm()">Sign In</button>
-			<button type="button" class="btn btn-signup"
-				ng-click="loadSignUpForm()">Sign Up</button>
-			<a href="#/userprofile">My Profile</a>
+			<button ng-if="!$root.sessionLogged" type="button"
+				class="btn btn-signin" ng-click="loadLoginForm()">Sign In</button>
+			<a ng-if="$root.sessionLogged" href="#/userprofile">My Profile</a>
 		</div>
 	</div>
 </section>

@@ -18,12 +18,13 @@
 				<div class="col-xs-4 col-sm-6">
 					<a href="#" class="btn btn-lg btn-block omb_btn-facebook"> <i
 						class="fa fa-facebook visible-xs"></i> <span class="hidden-xs"
-						fb-login >Facebook</span>
+						fb-login>Facebook</span>
 					</a>
 				</div>
 				<div class="col-xs-4 col-sm-6">
 					<a href="#" class="btn btn-lg btn-block omb_btn-google"> <i
-						class="fa fa-google-plus visible-xs"></i> <span class="hidden-xs" g-login>Google+</span>
+						class="fa fa-google-plus visible-xs"></i> <span class="hidden-xs"
+						g-login>Google+</span>
 					</a>
 				</div>
 			</div>
@@ -35,21 +36,37 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-offset-1 col-xs-12 col-sm-10">
-					<form class="omb_loginForm" action="" autocomplete="off"
-						method="POST">
+					<form class="omb_loginForm" autocomplete="off" method="POST"
+						ng-submit="login(user,loginMethod.loginBy)">
+
+						<div>
+							Choose Your Login : <label> <input type="radio"
+								name="loginBy" value="mobile" ng-model="loginMethod.loginBy">
+								Mobile
+							</label> <label> <input type="radio" name="loginMethod"
+								value="email" ng-model="loginMethod.loginBy"> Email
+							</label>
+						</div>
+
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="fa fa-user icon_clr"></i></span> <input type="text"
-								class="form-control" name="username" placeholder="email address">
+								class="fa fa-user icon_clr"></i></span> <input
+								ng-if="loginMethod.loginBy=='email'" type="text"
+								class="form-control" name="email" ng-model="user.username"
+								placeholder="email address" required> <input
+								ng-if="loginMethod.loginBy=='mobile'" type="number"
+								class="form-control" name="phone" ng-model="user.username"
+								placeholder="phone number" required>
 						</div>
 						<span class="help-block"></span>
 
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-lock icon_clr"></i></span> <input type="password"
-								class="form-control" name="password" placeholder="Password">
+								class="form-control" name="password" ng-model="user.password"
+								placeholder="Password" required>
 						</div>
-						<span class="help-block">Password error</span>
+						<!-- <span class="help-block">Password error</span> -->
 
 						<button class="btn btn-lg btn-block marizo_btn" type="submit">Login</button>
 					</form>
@@ -73,7 +90,21 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-default marizo_btn"
-			ng-click="$parent.closeModal()">Close</button>
+		<!-- <button type="button" class="btn btn-default marizo_btn"
+			ng-click="$parent.closeModal()">Close</button> -->
+
+
+		<div class="col-xs-12 col-sm-offset-1 col-sm-5">
+			<div style="margin-top: 10px;">
+				Not a Member yet?
+				<button type="button" class="btn btn-default marizo_btn"
+					ng-click="loadSignUpForm()">Join Us</button>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-5">
+			<button type="button" class="btn btn-default marizo_btn"
+				ng-click="$parent.closeModal()">Close</button>
+		</div>
+
 	</div>
 </div>

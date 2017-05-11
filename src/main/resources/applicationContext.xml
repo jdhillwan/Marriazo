@@ -10,6 +10,6 @@
     <aop:aspectj-autoproxy />
      
     <!-- Logging Aspect -->
-    <bean id="loggingAspect" class="com.webnosoft.handler.RequestPreHandler" />
+    <bean id="loggingAspect" class="com.webosoft.handler.RequestPreHandler" />
  
 </beans>

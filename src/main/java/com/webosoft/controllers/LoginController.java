@@ -3,6 +3,7 @@ package com.webosoft.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,6 +85,30 @@ public class LoginController {
 						responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
 					}
 				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseObj.setData(null);
+			responseObj.setResponse(null);
+			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
+		}
+
+		return responseObj;
+	}
+
+	@RequestMapping(value = "/user/{username}/fetch.rest", method = RequestMethod.POST)
+	public Object userByUsername(@PathVariable("username") String username, HttpSession session) {
+		ServiceResponse responseObj = new ServiceResponse();
+		try {
+
+			if (username != null) {
+				BasicDBObject searchResult = (BasicDBObject) loginService.login(username, "");
+				if (searchResult != null) {
+					responseObj.setData(searchResult.get("RecordList"));
+					responseObj.setResponse(searchResult.get("message").toString());
+					responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
+				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
