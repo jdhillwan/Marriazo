@@ -78,7 +78,7 @@
 				<div class="panel panel-default place-container">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							PLACE <span class="pull-right panel-collapse-clickable"
+							RATINGS <span class="pull-right panel-collapse-clickable"
 								data-toggle="collapse" data-parent="#accordion"
 								href="#placePanel"> <i
 								class="glyphicon glyphicon-triangle-top"></i>
@@ -89,20 +89,19 @@
 						class="panel-collapse panel-collapse collapse in">
 						<div class="panel-body">
 							<ul>
-								<li><label><input type="checkbox" name="theme[]" />
-										<img src="images/star.png" /><img src="images/star.png" /> </label><span
-									class="pull-right"> 12</span></li>
-								<li><label><input type="checkbox" name="theme[]" />
-										<img src="images/star.png" /><img src="images/star.png" /><img
-										src="images/star.png" /> </label><span class="pull-right"> 12</span></li>
-								<li><label><input type="checkbox" name="theme[]" />
-										<img src="images/star.png" /><img src="images/star.png" /><img
-										src="images/star.png" /><img src="images/star.png" /> </label><span
-									class="pull-right"> 12</span></li>
-								<li><label><input type="checkbox" name="theme[]" />
-										<img src="images/star.png" /><img src="images/star.png" /><img
+								<li><label><input type="checkbox" name="rating"
+										ng-model="rating1" ng-change="ratingChanged()" value="3" /> <img
 										src="images/star.png" /><img src="images/star.png" /><img
-										src="images/star.png" /> </label><span class="pull-right"> 12</span></li>
+										src="images/star.png" /> </label></li>
+								<li><label><input type="checkbox" name="rating"
+										ng-model="rating2" ng-change="ratingChanged()" value="4" /> <img
+										src="images/star.png" /><img src="images/star.png" /><img
+										src="images/star.png" /><img src="images/star.png" /> </label></li>
+								<li><label><input type="checkbox" name="rating"
+										ng-model="rating3" ng-change="ratingChanged()" value="5" /> <img
+										src="images/star.png" /><img src="images/star.png" /><img
+										src="images/star.png" /><img src="images/star.png" /><img
+										src="images/star.png" /> </label></li>
 							</ul>
 						</div>
 					</div>
@@ -117,30 +116,23 @@
 					<form class="form-horizontal">
 						<div class="col-xs-12 col-sm-3 text-center">
 							<div class="row">
-								<div class="col-sm-4 col-xs-12">
+								<div class="col-sm-6 col-xs-12">
 									<label style="font-weight: normal;"> CAPACITY </label>
 								</div>
-								<div class="col-sm-8 col-xs-12">
-									<select class="form-control">
-										<option>50 People</option>
-										<option>100 People</option>
-										<option>150 People</option>
-										<option>200 People</option>
-									</select>
+								<div class="col-sm-6 col-xs-12">
+									<input class="form-control" type="number" ng-model="capacity">
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-9 text-center">
+						<div class="col-xs-12 col-sm-9">
 							<div class="row">
-								<div class="col-sm-4 text-right">
-									<label style="font-weight: normal;"> BOOKING DATE</label>
-								</div>
-								<div class="col-sm-4">
+								<div class="col-sm-2 text-right">DATE</div>
+								<div class="col-sm-3">
 									<p class="input-group">
 										<input type="text" class="form-control"
 											uib-datepicker-popup="MM/dd/yyyy" ng-model="startDate"
-											ng-required="true" close-text="Close" is-open="popup1.opened" />
-										<span class="input-group-btn">
+											ng-required="true" close-text="Close" is-open="popup1.opened"
+											ng-change="addDateFilter()" /> <span class="input-group-btn">
 											<button type="button" class="btn btn-default"
 												ng-click="open1($event)">
 												<i class="glyphicon glyphicon-calendar"></i>
@@ -148,18 +140,38 @@
 										</span>
 									</p>
 								</div>
-								<div class="col-sm-4">
+								<div class="col-sm-2">
+									<select class="form-control" ng-model="startTime"
+										ng-change="addDateFilter()">
+										<option>--Time--</option>
+										<option ng-repeat="timeSlot in timeSlots" value="{{$index}}">{{timeSlot}}
+											AM</option>
+										<option ng-repeat="timeSlot in timeSlots"
+											value="{{$index+12}}">{{timeSlot}} PM</option>
+									</select>
+								</div>
+								<div class="col-sm-3">
 									<p class="input-group">
 										<input type="text" class="form-control"
 											uib-datepicker-popup="MM/dd/yyyy" ng-model="endDate"
-											is-open="popup2.opened" ng-required="true" close-text="Close" />
-										<span class="input-group-btn">
+											is-open="popup2.opened" ng-required="true" close-text="Close"
+											ng-change="addDateFilter()" /> <span class="input-group-btn">
 											<button type="button" class="btn btn-default"
 												ng-click="open2($event)">
 												<i class="glyphicon glyphicon-calendar"></i>
 											</button>
 										</span>
 									</p>
+								</div>
+								<div class="col-sm-2">
+									<select class="form-control" ng-model="endTime"
+										ng-change="addDateFilter()">
+										<option>--Time--</option>
+										<option ng-repeat="timeSlot in timeSlots" value="{{$index}}">{{timeSlot}}
+											AM</option>
+										<option ng-repeat="timeSlot in timeSlots"
+											value="{{$index+12}}">{{timeSlot}} PM</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -169,13 +181,16 @@
 			<div class="row search-results">
 				<div class="col-xs-12">
 					{{venues.length}} RESULT(S) <span class="filter">Rs: {{min}}
-						- Rs: {{max}}</span> <span class="filter">5 Star</span> <span
+						- Rs: {{max}}</span> <span class="filter"
+						ng-if="ratingFilters && ratingFilters.length > 0"><span
+						ng-repeat="rating in ratingFilters">{{rating}}<span
+							ng-if="$index != (ratingFilters.length-1)">,</span></span> Star</span> <span
 						class="filter">{{city}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 grid-item"
-					ng-repeat="venue in venues">
+					ng-repeat="venue in venues" ng-show="uiFilter(venue)">
 					<div class="row">
 						<a href="#/venueDetails/{{venue._id}}">
 							<div class="col-xs-4 grid-images">

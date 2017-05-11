@@ -11,16 +11,15 @@ angular.module('MarriazoApp').controller('SearchController',
 			scope.max =100000;
 			scope.popup1 = {"opened" : false};
 			scope.popup2 = {"opened" : false};
+			scope.timeSlots = ["12:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"];
+			scope.params = {"state" : scope.state, "city" : scope.city};
 			
 			scope.fetchVenues = function() {
-				var startDate = new Date(2017, 4, 17, 13, 0, 0, 0).getTime();
-				var endDate = new Date(2017, 4, 17, 18, 0, 0, 0).getTime();
-				var params = {"state" : scope.state, "city" : scope.city, "date_range" : {"date_from" : startDate, "date_to" : endDate}};
-				params.price_range = {"min" : scope.min, "max" : scope.max};
+				scope.params.price_range = {"min" : scope.min, "max" : scope.max};
 				$http({
 					method : "POST",
 					url : "../marriazo-portal/venue/fetch-all.rest",
-					data : params
+					data : scope.params
 				}).then(function(response) {
 					scope.venues = response.data.data;
 					$('#price_range').slider({});
@@ -38,6 +37,35 @@ angular.module('MarriazoApp').controller('SearchController',
 			
 			scope.changePriceRange = function() {
 				scope.fetchVenues();
+			}
+			
+			scope.addDateFilter = function() {
+				delete scope.params.date_range;
+				if(scope.startDate && scope.endDate && scope.startTime && scope.endTime){
+					scope.startDate.setHours(scope.startTime);
+					scope.endDate.setHours(scope.endTime);
+					var start = scope.startDate.getTime();
+					var end = scope.endDate.getTime();
+					scope.params.date_range = {"date_from" : start, "date_to" : end};
+					scope.fetchVenues();
+				}
+			}
+			
+			scope.ratingChanged = function() {
+				scope.ratingFilters = [];
+				var ratings = $("input[name=rating]:checked").map(
+					     function () {return this.value;}).get().join(",");
+				if(ratings != ""){
+					scope.ratingFilters = ratings.split(",");
+				}
+			}
+			
+			scope.uiFilter = function(venue) {
+				var retVal = false;
+				if((!scope.capacity || (scope.capacity >= venue.capacity.banquet.min && scope.capacity <= venue.capacity.banquet.max)) && (!scope.ratingFilters || scope.ratingFilters.length == 0 || scope.ratingFilters.indexOf(venue.rating) >= 0)){
+					retVal = true;
+				}
+				return retVal;
 			}
 			
 			scope.initializeAsset();

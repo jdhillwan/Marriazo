@@ -11,7 +11,7 @@ function getFilteredVenues(params) {
 		var bookings = db.getCollection("bookings").find({"venueId" : venueId, "bookedTo" : {$gte : date_range.date_from}}).toArray();
 		if(bookings.length>0){
 			bookings.forEach(function(booking) {
-				if((date_to > booking.bookedFrom && date_to <= booking.bookedTo) || ((date_from >= booking.bookedFrom && date_from < booking.bookedTo))){
+				if((date_to > booking.bookedFrom && date_to <= booking.bookedTo) || (date_from >= booking.bookedFrom && date_from < booking.bookedTo) || (date_from < booking.bookedFrom && date_to > booking.bookedFrom)){
 					available = false;
 				}
 			});
