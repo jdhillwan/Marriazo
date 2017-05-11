@@ -29,20 +29,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4">
-				<div class="col-md-4">
-					<label>CAPACITY</label>
-				</div>
-				<div class="col-md-8">
-					<select class="form-control" id="sel1">
-						<option>0-50</option>
-						<option>51-100</option>
-						<option>101-150</option>
-						<option>151-200</option>
-					</select>
-				</div>
+			<div class="col-md-8 col-sm-4">
+					<label>CAPACITY : </label>
+					{{venue.capacity.banquet.min}} - {{venue.capacity.banquet.max}}
 			</div>
-			<div class="col-md-4 col-sm-4">
+			<!-- <div class="col-md-4 col-sm-4">
 				<div class="col-md-4">
 					<label>Booking Date</label>
 				</div>
@@ -54,27 +45,20 @@
 						<option>151-200</option>
 					</select>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="row">
 			<div style="padding-left: 0;" class="col-md-8 col-sm-8">
 				<div style="padding-left: 0;" class="col-md-12 col-sm-12">
 					<img class="img-responsive" src="images/akm_venue.png">
 					<div style="margin-top: 40px;" class="col-md-6 col-sm-6 col-xs-12">
-						<h2 class="text-center">
+						<h2>
 							<span
 								style="border-bottom: 2px solid #c2707e; padding-bottom: 5px;">Highlights
 								of the Palace</span>
 						</h2>
 						<ul class="venue_highlights">
-							<li>Lorem Ipsum is simply dummy text of the printing and
-								typesetting industry.</li>
-							<li>Lorem Ipsum is simply dummy text of the printing and
-								typesetting industry.</li>
-							<li>Lorem Ipsum is simply dummy text of the printing and
-								typesetting industry.</li>
-							<li>Lorem Ipsum is simply dummy text of the printing and
-								typesetting industry.</li>
+							<li ng-repeat="facility in venue.facilities">{{facility | uppercase}}</li>
 						</ul>
 					</div>
 					<!-- {{venue.googleMap}} -->
