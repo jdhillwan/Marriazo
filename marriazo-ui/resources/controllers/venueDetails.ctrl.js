@@ -10,9 +10,6 @@ angular.module('MarriazoApp').controller(
             '$sce',
             function(rootScope, scope, $http, location, NotificationService,
                     $routeParams,$sce) {
-              console
-                      .log("VenueDetailsController called",
-                              $routeParams.venueId);
 
               scope.initializeAsset = function() {
                 var venueID = $routeParams.venueId;
@@ -28,9 +25,8 @@ angular.module('MarriazoApp').controller(
                         function(response) {
                           if (response != null && response.data != null
                                   && response.data.data != null) {
-                            scope.venue = response.data.data[0];
+                            scope.venue = response.data.data;
                             scope.mapFrame = $sce.trustAsResourceUrl(scope.venue.googleMap);
-                            console.log(scope.venue);
                           }
                         });
 

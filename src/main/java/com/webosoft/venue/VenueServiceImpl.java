@@ -15,10 +15,12 @@ public class VenueServiceImpl implements VenueService {
 
 	@SuppressWarnings("unchecked")
 	public Object getVenue(BasicDBObject searchParams) {
-		// TODO Auto-generated method stub
 		List<VenueDTO> venues = (List<VenueDTO>) venueDAO.searchVenue(searchParams);
-		
 		return venues;
+	}
+
+	public Object getVenueDetail(BasicDBObject filterDto) {
+		return venueDAO.getVenueDetail(filterDto);
 	}
 
 }

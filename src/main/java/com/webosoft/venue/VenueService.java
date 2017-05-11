@@ -6,4 +6,6 @@ public interface VenueService {
 
 	Object getVenue(BasicDBObject searchParams);
 
+	Object getVenueDetail(BasicDBObject filterDto);
+
 }

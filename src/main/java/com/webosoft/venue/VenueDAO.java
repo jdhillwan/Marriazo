@@ -6,4 +6,6 @@ public interface VenueDAO {
 
 	Object searchVenue(BasicDBObject searchParams);
 
+	Object getVenueDetail(BasicDBObject filterDto);
+
 }

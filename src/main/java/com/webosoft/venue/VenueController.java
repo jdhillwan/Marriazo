@@ -35,12 +35,9 @@ public class VenueController {
 			HttpServletRequest request) {
 
 		ServiceResponse responseObj = new ServiceResponse();
-		// set filter DTO first
-		FilterDTO filterDto = new FilterDTO();
-		filterDto.getSearch().put("_id", venueID);
-
-		/*responseObj.setData(venueService.getVenue(filterDto));*/
-
+		BasicDBObject filterDto = new BasicDBObject();
+		filterDto.put("_id", venueID);
+		responseObj.setData(venueService.getVenueDetail(filterDto));
 		return responseObj;
 	}
 
