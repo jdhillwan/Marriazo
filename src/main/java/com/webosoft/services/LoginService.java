@@ -1,4 +1,7 @@
-package com.webosoft.login;
+package com.webosoft.services;
+
+import com.webosoft.domains.SubscribeDTO;
+import com.webosoft.domains.UserDTO;
 
 public interface LoginService {
 
@@ -7,4 +10,6 @@ public interface LoginService {
 	SubscribeDTO subscribe(SubscribeDTO subscribeDto);
 
 	UserDTO profile(UserDTO userDto);
+
+	Object login(String username, String password);
 }

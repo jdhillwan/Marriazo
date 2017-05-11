@@ -3,6 +3,7 @@ package com.webosoft.config;
 import javax.annotation.PostConstruct;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * <h1>MongoMultiTenantConfig</h1>. This class is used to initialize the
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 2017-03-25
  * @see WebMongoDBConfig
  */
+@ImportResource("classpath*:/*.xml")
 @Configuration
 public class MongoMultiTenantConfig extends WebMongoDBConfig {
 	@PostConstruct

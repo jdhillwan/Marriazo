@@ -1,4 +1,4 @@
-package com.webosoft.login;
+package com.webosoft.serviceImpl;
 
 import java.util.List;
 
@@ -8,6 +8,10 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.webosoft.common.MongoConstants;
+import com.webosoft.dao.LoginDAO;
+import com.webosoft.domains.SubscribeDTO;
+import com.webosoft.domains.UserDTO;
+import com.webosoft.services.LoginService;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -30,10 +34,14 @@ public class LoginServiceImpl implements LoginService {
 	public SubscribeDTO subscribe(SubscribeDTO subscribeDto) {
 		return (SubscribeDTO) loginDAO.save(subscribeDto, MongoConstants.SUBSCRIBE_COLLECTION);
 	}
-	
+
 	public UserDTO profile(UserDTO userDto) {
 		// TODO Auto-generated method stub
 		return (UserDTO) loginDAO.save(userDto, MongoConstants.USER_COLLECTION);
+	}
+
+	public Object login(String username, String password) {
+		return loginDAO.login(username, password);
 	}
 
 }

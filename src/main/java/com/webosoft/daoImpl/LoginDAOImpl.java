@@ -1,13 +1,17 @@
-package com.webosoft.login;
+package com.webosoft.daoImpl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.ScriptOperations;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.BasicDBObject;
+import com.webosoft.common.MongoConstants;
+import com.webosoft.dao.LoginDAO;
+import com.webosoft.domains.UserDTO;
 
 @Component
 public class LoginDAOImpl implements LoginDAO {
@@ -24,9 +28,22 @@ public class LoginDAOImpl implements LoginDAO {
 		mongoTemplate.save(objectDto, collectionName);
 		return objectDto;
 	}
-	
+
 	public List<UserDTO> fetchUsers(Query query, String collectionName) {
 		return mongoTemplate.find(query, UserDTO.class, collectionName);
+	}
+
+	public BasicDBObject login(String username, String password) {
+		ScriptOperations scriptOps = mongoTemplate.scriptOps();
+
+		BasicDBObject mongoResult = (BasicDBObject) scriptOps.call(MongoConstants.FunctionNames.LOGIN.value(), username,
+				password);
+
+		if (mongoResult != null) {
+			return mongoResult;
+		} else {
+			return null;
+		}
 	}
 
 }

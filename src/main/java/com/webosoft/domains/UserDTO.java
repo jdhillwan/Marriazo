@@ -1,4 +1,4 @@
-package com.webosoft.login;
+package com.webosoft.domains;
 
 import java.io.Serializable;
 import java.util.Map;
