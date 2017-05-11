@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mongodb.BasicDBObject;
-import com.webosoft.common.FilterDTO;
 import com.webosoft.common.ServiceResponse;
 
 @RestController
