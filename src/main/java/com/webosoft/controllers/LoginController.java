@@ -66,7 +66,6 @@ public class LoginController {
 			@RequestParam(value = "password", required = true) String password, HttpSession session) {
 		ServiceResponse responseObj = new ServiceResponse();
 		try {
-
 			String sessionAttr = (String) session.getAttribute("userName");
 			if (sessionAttr != null && sessionAttr.equalsIgnoreCase(username)) {
 				responseObj.setResponse("UserArleadyLoggedIn");
@@ -77,9 +76,9 @@ public class LoginController {
 			} else {
 
 				if (username != null && password != null) {
-					session.setAttribute("userName", username);
 					BasicDBObject searchResult = (BasicDBObject) loginService.login(username, password);
 					if (searchResult != null) {
+						session.setAttribute("userName", username);
 						responseObj.setData(searchResult.get("RecordList"));
 						responseObj.setResponse(searchResult.get("message").toString());
 						responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
@@ -118,6 +117,15 @@ public class LoginController {
 		}
 
 		return responseObj;
+	}
+	
+	@RequestMapping(value = "/isloggedIn.rest", method = RequestMethod.POST)
+	public Object isLoggedIn(HttpSession session) {
+		String sessionAttr = (String) session.getAttribute("userName");
+		if(sessionAttr!=null){
+			return true;
+		}
+		return false;
 	}
 
 }

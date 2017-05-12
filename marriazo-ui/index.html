@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+function isNumberKey(evt, value)
+{
+   var charCode = (evt.which) ? evt.which : event.keyCode
+   if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)){
+      return false;
+   }else{
+  	  value = value + evt.key;
+	   if(value.length > 10){
+		   return false;
+	   }
+   }
+
+   return true;
+}
+</script>
 <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/angular.min.js"></script>
@@ -26,7 +42,8 @@
 <script src="js/notification.service.js"></script>
 
 <script src="js/angular.rangeSlider.js"></script>
-<link href="css/angular.rangeSlider.css" rel="stylesheet" type="text/css" />
+<link href="css/angular.rangeSlider.css" rel="stylesheet"
+	type="text/css" />
 
 <script src="js/underscore-min.js"></script>
 

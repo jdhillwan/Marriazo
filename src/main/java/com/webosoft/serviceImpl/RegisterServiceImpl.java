@@ -20,12 +20,13 @@ public class RegisterServiceImpl implements RegisterService {
 
 	public Object register(UserDTO userDto) throws Exception {
 		String email = userDto.getString("email");
+		String mobile = userDto.getString("mobile");
 		Criteria criteria = new Criteria();
-		criteria.and("email").is(email);
+		criteria.orOperator(new Criteria().and("email").is(email), new Criteria().and("mobile").is(mobile));
 		Query query = new Query(criteria);
 		List<UserDTO> users = registerDAO.fetchUsers(query, MongoConstants.USER_COLLECTION);
 		if (users.size() > 0) {
-			throw new Exception("User Already Exists");
+			return null;
 		}
 		return (UserDTO) registerDAO.save(userDto, MongoConstants.USER_COLLECTION);
 	}

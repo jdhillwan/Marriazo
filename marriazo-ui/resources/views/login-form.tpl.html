@@ -1,15 +1,7 @@
-<!-- <button g-login type="button">Google Login</button>
-<button linked-in type="button">LinkedIn Login</button>
-<button fb-login type="button">facebook Login</button> -->
-
-
-
-
-
 <!-- Modal content-->
 <div class="modal-dialog modal-md">
 	<div class="modal-header">
-		<button type="button" class="close" ng-click="$parent.closeModal()">&times;</button>
+		<button type="button" class="close pull-right" ng-click="$parent.closeModal()">&times;</button>
 		<h4 class="modal-title text-center">Login</h4>
 	</div>
 	<div class="modal-body">
@@ -39,24 +31,11 @@
 					<form class="omb_loginForm" autocomplete="off" method="POST"
 						ng-submit="login(user,loginMethod.loginBy)">
 
-						<div>
-							Choose Your Login : <label> <input type="radio"
-								name="loginBy" value="mobile" ng-model="loginMethod.loginBy">
-								Mobile
-							</label> <label> <input type="radio" name="loginMethod"
-								value="email" ng-model="loginMethod.loginBy"> Email
-							</label>
-						</div>
-
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="fa fa-user icon_clr"></i></span> <input
-								ng-if="loginMethod.loginBy=='email'" type="text"
+								class="fa fa-user icon_clr"></i></span> <input type="text"
 								class="form-control" name="email" ng-model="user.username"
-								placeholder="email address" required> <input
-								ng-if="loginMethod.loginBy=='mobile'" type="number"
-								class="form-control" name="phone" ng-model="user.username"
-								placeholder="phone number" required>
+								placeholder="email address" required>
 						</div>
 						<span class="help-block"></span>
 
@@ -90,21 +69,18 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<!-- <button type="button" class="btn btn-default marizo_btn"
-			ng-click="$parent.closeModal()">Close</button> -->
-
-
 		<div class="col-xs-12 col-sm-offset-1 col-sm-5">
-			<div style="margin-top: 10px;">
+			<div class="mt-10">
 				Not a Member yet?
 				<button type="button" class="btn btn-default marizo_btn"
 					ng-click="loadSignUpForm()">Join Us</button>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-5">
-			<button type="button" class="btn btn-default marizo_btn"
-				ng-click="$parent.closeModal()">Close</button>
+			<div class="mt-10 pull-right">
+				<button type="button" class="btn btn-default marizo_btn"
+					ng-click="$parent.closeModal()">Close</button>
+			</div>
 		</div>
-
 	</div>
 </div>
