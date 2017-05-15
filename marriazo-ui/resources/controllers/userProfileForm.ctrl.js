@@ -1,42 +1,67 @@
-angular.module('MarriazoApp').controller(
-		'UserProfileFormController',
-		[
-				'$scope',
-				'$http',
-				'$location',
-				'NotificationService',
-				'$cookieStore',
-				function(scope, $http, location, NotificationService,
-						$cookieStore) {
+angular
+		.module('MarriazoApp')
+		.controller(
+				'UserProfileFormController',
+				[
+						'$scope',
+						'$http',
+						'$location',
+						'NotificationService',
+						'$cookieStore',
+						function(scope, $http, location, NotificationService,
+								$cookieStore) {
 
-					var username = $cookieStore.get("userDetail");
-					var init = function() {
-						console.log("ctrl called");
-						fetchUserByUserName();
-					};
+							var username = $cookieStore.get("userDetail");
+							var init = function() {
+								console.log("ctrl called");
+								fetchUserByUserName();
+							};
 
-					init();
+							init();
 
-					function fetchUserByUserName() {
-						$http(
-								{
+							function fetchUserByUserName() {
+								$http(
+										{
+											method : "POST",
+											url : "../marriazo-portal/user/"
+													+ username + "/fetch.rest",
+											params : {
+
+											}
+										})
+										.then(
+												function(response) {
+													console.log(response);
+													if (response != null
+															&& response.data != null
+															&& response.data.data != null) {
+														scope.userDetails = response.data.data[0];
+
+													}
+
+												});
+
+							}
+
+							scope.logOut = function() {
+								$http({
 									method : "POST",
-									url : "../marriazo-portal/user/" + username
-											+ "/fetch.rest",
+									url : "../marriazo-portal/logout.rest",
 									params : {
 
 									}
-								}).then(
-								function(response) {
-									console.log(response);
-									if (response != null
-											&& response.data != null
-											&& response.data.data != null) {
-										scope.userDetails = response.data.data[0];
-
-									}
-
-								});
-
-					}
-				} ]);
+								})
+										.then(
+												function(response) {
+													console.log(response);
+													if (response != null
+															&& response.data != null
+															&& response.data.response != null) {
+														console
+																.log(response.data.response);
+														$cookieStore
+																.remove("userDetail");
+													}
+												});
+							}
+						} ]);

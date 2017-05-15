@@ -92,8 +92,6 @@ angular
 							}
 
 							scope.login = function(user, method) {
-								console.log(method);
-								console.log(user);
 								if (user != null && user.username != null
 										&& user.password != null) {
 
