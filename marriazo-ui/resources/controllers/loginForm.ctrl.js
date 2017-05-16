@@ -53,8 +53,8 @@ angular
 																				.closeModal();
 																		location
 																				.path('/');// temporary
-																							// code
-																							// need
+																		// code
+																		// need
 																		// to
 																		// set
 																		// it in
@@ -109,8 +109,10 @@ angular
 														if (response != null
 																&& response.data != null
 																&& response.data.data != null) {
+
 															if (response.data.response != null
 																	&& response.data.response == "UserArleadyLoggedIn") {
+
 																NotificationService
 																		.success(
 																				"success",
@@ -128,6 +130,7 @@ angular
 																	.put(
 																			"userDetail",
 																			response.data.data.username);
+															rootScope.sessionLogged = true;
 														}
 														scope.$parent
 																.closeModal();

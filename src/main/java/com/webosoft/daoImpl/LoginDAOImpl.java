@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.ScriptOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.BasicDBObject;
@@ -44,6 +46,17 @@ public class LoginDAOImpl implements LoginDAO {
 		} else {
 			return null;
 		}
+	}
+
+	public BasicDBObject update(UserDTO userDTO, String collectionName) {
+		if (userDTO != null && userDTO.get("_id") != null) {
+			Query query = new Query(Criteria.where("_id").is(userDTO.get("_id")));
+			Update update = Update.fromDBObject(userDTO);
+			mongoTemplate.updateMulti(query, update, collectionName);
+			return userDTO;
+		}
+
+		return userDTO;
 	}
 
 }

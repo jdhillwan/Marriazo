@@ -8,8 +8,9 @@ angular
 						'$location',
 						'NotificationService',
 						'$cookieStore',
+						'$rootScope',
 						function(scope, $http, location, NotificationService,
-								$cookieStore) {
+								$cookieStore, $rootScope) {
 
 							var username = $cookieStore.get("userDetail");
 							var init = function() {
@@ -36,6 +37,10 @@ angular
 															&& response.data != null
 															&& response.data.data != null) {
 														scope.userDetails = response.data.data[0];
+														scope.firstName = scope.userDetails.name
+																.split(" ")[0];
+														scope.lastName = scope.userDetails.name
+																.split(" ")[1];
 
 													}
 
@@ -57,10 +62,41 @@ angular
 													if (response != null
 															&& response.data != null
 															&& response.data.response != null) {
-														console
-																.log(response.data.response);
+
 														$cookieStore
 																.remove("userDetail");
+														NotificationService
+																.success(
+																		"success",
+																		"successfully logged out");
+														$rootScope.sessionLogged = false;
+														location.path('/');
+
+													}
+												});
+							}
+
+							scope.updateUser = function() {
+								scope.userDetails.name = scope.firstName + " "
+										+ scope.lastName;
+								$http(
+										{
+											method : "PUT",
+											url : "../marriazo-portal/user/update.rest",
+											data : scope.userDetails
+										})
+										.then(
+												function(response) {
+													if (response != null
+															&& response.data != null
+															&& response.data.response != null) {
+
+														scope.userDetails = "";
+														fetchUserByUserName();
+														NotificationService
+																.success(
+																		"success",
+																		"user successfully updated");
 													}
 												});
 							}

@@ -12,4 +12,6 @@ public interface LoginService {
 	UserDTO profile(UserDTO userDto);
 
 	Object login(String username, String password);
+
+	Object update(UserDTO userDTO);
 }

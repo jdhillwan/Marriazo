@@ -61,6 +61,26 @@ public class LoginController {
 
 	}
 
+	@RequestMapping(value = "/user/update.rest", method = RequestMethod.PUT)
+	public Object updateUser(@RequestBody UserDTO userDto) {
+		ServiceResponse responseObj = new ServiceResponse();
+		try {
+			if (userDto != null) {
+				loginService.update(userDto);
+				responseObj.setData(userDto);
+				responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
+				responseObj.setResponse("user updated successfully");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseObj.setData(userDto);
+			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
+		}
+
+		return responseObj;
+
+	}
+
 	@RequestMapping(value = "/login.rest", method = RequestMethod.POST)
 	public Object login(@RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "password", required = true) String password, HttpSession session) {
@@ -118,11 +138,28 @@ public class LoginController {
 
 		return responseObj;
 	}
-	
+
+	@RequestMapping(value = "/logout.rest", method = RequestMethod.POST)
+	public Object logOut(HttpSession session) {
+		ServiceResponse responseObj = new ServiceResponse();
+		try {
+			session.invalidate();
+			responseObj.setData(null);
+			responseObj.setResponse("sessionOut");
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseObj.setData(null);
+			responseObj.setResponse(null);
+			responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
+		}
+
+		return responseObj;
+	}
+
 	@RequestMapping(value = "/isloggedIn.rest", method = RequestMethod.POST)
 	public Object isLoggedIn(HttpSession session) {
 		String sessionAttr = (String) session.getAttribute("userName");
-		if(sessionAttr!=null){
+		if (sessionAttr != null) {
 			return true;
 		}
 		return false;

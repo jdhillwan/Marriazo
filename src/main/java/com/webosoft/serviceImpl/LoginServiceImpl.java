@@ -44,4 +44,9 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.login(username, password);
 	}
 
+	public Object update(UserDTO userDTO) {
+		// TODO Auto-generated method stub
+		return loginDAO.update(userDTO, MongoConstants.USER_COLLECTION);
+	}
+
 }

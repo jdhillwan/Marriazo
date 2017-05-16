@@ -14,4 +14,6 @@ public interface LoginDAO {
 	public List<UserDTO> fetchUsers(Query query, String collectionName);
 
 	public BasicDBObject login(String username, String password);
+
+	public BasicDBObject update(UserDTO userDTO, String collectionName);
 }
