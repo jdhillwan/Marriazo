@@ -16,4 +16,6 @@ public interface LoginDAO {
 	public BasicDBObject login(String username, String password);
 
 	public BasicDBObject update(UserDTO userDTO, String collectionName);
+
+	Object fetchUserDetails(String email, String collection);
 }

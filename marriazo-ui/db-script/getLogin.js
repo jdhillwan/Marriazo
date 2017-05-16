@@ -13,7 +13,7 @@ function getLogin(username, password) {
 		if (results != null && results.length > 0) {
 			user = results[0];
 			if(user.password == password){
-				returnObj["recordList"] = results;
+				returnObj["user"] = results[0];
 				returnObj["message"] = "Record Found";
 			}else{
 				returnObj["message"] = "Entered Password is not Correct";

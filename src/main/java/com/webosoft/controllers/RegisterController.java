@@ -22,6 +22,7 @@ public class RegisterController {
 		ServiceResponse responseObj = new ServiceResponse();
 		try {
 			if (userDto != null) {
+				userDto.remove("confirmPassword");
 				registerService.register(userDto);
 				responseObj.setData(userDto);
 				responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);

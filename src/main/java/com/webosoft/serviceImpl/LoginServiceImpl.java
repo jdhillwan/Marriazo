@@ -49,4 +49,8 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.update(userDTO, MongoConstants.USER_COLLECTION);
 	}
 
+	public Object fetchUserDetails(String email) {
+		return loginDAO.fetchUserDetails(email, MongoConstants.USER_COLLECTION);
+	}
+
 }

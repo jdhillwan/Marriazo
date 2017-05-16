@@ -3,17 +3,16 @@ package com.webosoft.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mongodb.BasicDBObject;
 import com.webosoft.common.MessageConstants;
 import com.webosoft.common.ServiceResponse;
 import com.webosoft.domains.SubscribeDTO;
-import com.mongodb.BasicDBObject;
 import com.webosoft.domains.UserDTO;
 import com.webosoft.services.LoginService;
 
@@ -97,8 +96,8 @@ public class LoginController {
 				if (username != null && password != null) {
 					BasicDBObject searchResult = (BasicDBObject) loginService.login(username, password);
 					if (searchResult != null) {
-						if(searchResult.get("recordList")!=null){
-							session.setAttribute("userName", username);
+						if(searchResult.get("user")!=null){
+							session.setAttribute("userName", ((BasicDBObject)searchResult.get("user")).getString("email"));
 						}
 						responseObj.setData(searchResult);
 						responseObj.setResponse(searchResult.get("message").toString());
@@ -116,19 +115,22 @@ public class LoginController {
 		return responseObj;
 	}
 
-	@RequestMapping(value = "/user/{username}/fetch.rest", method = RequestMethod.POST)
-	public Object userByUsername(@PathVariable("username") String username, HttpSession session) {
+	@RequestMapping(value = "/user/fetch.rest", method = RequestMethod.POST)
+	public Object userByUsername(@RequestBody(required = false) String username, HttpSession session) {
 		ServiceResponse responseObj = new ServiceResponse();
+		String email = username;
+		if(username == null){
+			email = (String) session.getAttribute("userName");
+		}
 		try {
-
-			if (username != null) {
-				BasicDBObject searchResult = (BasicDBObject) loginService.login(username, "");
-				if (searchResult != null) {
-					responseObj.setData(searchResult.get("RecordList"));
-					responseObj.setResponse(searchResult.get("message").toString());
+			if (email != null) {
+					responseObj.setData(loginService.fetchUserDetails(email));
+					responseObj.setResponse("User Details Found Successfully");
 					responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
-				}
-
+			}else{
+				responseObj.setData(null);
+				responseObj.setResponse("No Logged In User Found");
+				responseObj.setStatus(MessageConstants.RESPONSE_ERROR);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

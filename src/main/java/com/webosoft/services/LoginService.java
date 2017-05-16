@@ -14,4 +14,6 @@ public interface LoginService {
 	Object login(String username, String password);
 
 	Object update(UserDTO userDTO);
+
+	Object fetchUserDetails(String email);
 }
