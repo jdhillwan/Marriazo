@@ -94,12 +94,13 @@ public class LoginController {
 				responseObj.setData(sessionResult);
 				return responseObj;
 			} else {
-
 				if (username != null && password != null) {
 					BasicDBObject searchResult = (BasicDBObject) loginService.login(username, password);
 					if (searchResult != null) {
-						session.setAttribute("userName", username);
-						responseObj.setData(searchResult.get("RecordList"));
+						if(searchResult.get("recordList")!=null){
+							session.setAttribute("userName", username);
+						}
+						responseObj.setData(searchResult);
 						responseObj.setResponse(searchResult.get("message").toString());
 						responseObj.setStatus(MessageConstants.RESPONSE_SUCCESS);
 					}

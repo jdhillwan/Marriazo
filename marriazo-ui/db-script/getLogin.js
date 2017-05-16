@@ -1,12 +1,9 @@
 function getLogin(username, password) {
 	/* to fetch user by email or mobile phone */
 	var returnObj = {};
-	returnObj["RecordList"] = null;
-	returnObj["message"] = null;
 
 	if (username != null) {
-		var users = db.getCollection('user');
-		var results = users.find({
+		var results = db.getCollection('user').find({
 			$or : [ {
 				"email" : username
 			}, {
@@ -14,10 +11,15 @@ function getLogin(username, password) {
 			} ]
 		}).toArray();
 		if (results != null && results.length > 0) {
-			returnObj["RecordList"] = results;
-			returnObj["message"] = "Record Found";
+			user = results[0];
+			if(user.password == password){
+				returnObj["recordList"] = results;
+				returnObj["message"] = "Record Found";
+			}else{
+				returnObj["message"] = "Entered Password is not Correct";
+			}
 		} else {
-			returnObj["message"] = "No Record Found";
+			returnObj["message"] = "User Not Registered";
 		}
 	} else {
 		returnObj["message"] = "username must not be blank";

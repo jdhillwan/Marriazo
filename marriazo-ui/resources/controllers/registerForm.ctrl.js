@@ -8,9 +8,9 @@ angular
 						'$http',
 						'NotificationService',
 						'$location',
-						'$uibModalInstance',
+						'$uibModal',
 						function(rootScope, scope, $http, NotificationService,
-								location, uibModalInstance) {
+								location, uibModal) {
 
 							scope.initializeAsset = function() {
 								scope.cityList = {
@@ -40,7 +40,7 @@ angular
 																.success(
 																		"success",
 																		"Registered Successfully!! Please Login");
-														scope.closePopup();
+														scope.$parent.closeSignUpModal();
 														location.path("/");
 
 													} else {

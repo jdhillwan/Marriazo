@@ -102,44 +102,28 @@ angular
 											'username' : user.username,
 											'password' : user.password
 										}
-									})
-											.then(
-													function(response) {
-														console.log(response);
-														if (response != null
-																&& response.data != null
-																&& response.data.data != null) {
-
-															if (response.data.response != null
-																	&& response.data.response == "UserArleadyLoggedIn") {
-
-																NotificationService
-																		.success(
-																				"success",
-																				"User Already logged in");
-															} else {
-																NotificationService
-																		.success(
-																				"success",
-																				"successfully logged in");
-															}
-															var userDetails = {
-																"username" : response.data.data.username
-															}
-															$cookieStore
-																	.put(
-																			"userDetail",
-																			response.data.data.username);
-															rootScope.sessionLogged = true;
-														}
-														scope.$parent
-																.closeModal();
-														location.path('/');// temporary
-														// code need to
-														// set it in fb account
-													});
-
+									}).then(function(response) {
+										//console.log(response);
+										if (response != null && response.data != null && response.data.data != null) {
+											if (response.data.response != null && response.data.response == "UserArleadyLoggedIn") {
+												NotificationService.warning("Warning","User Already logged in");
+											} else {
+												if(response.data.data && response.data.data.recordList){
+													rootScope.user = response.data.data.recordList[0];
+													scope.user = rootScope.user;
+													$cookieStore.put("userDetail",response.data.data.username);
+													rootScope.sessionLogged = true;
+													NotificationService.success("Success","Successfully logged in");
+												}else{
+													NotificationService.error("Error",response.data.data.message);
+												}
+											}
+										}
+										scope.$parent.closeModal();
+										location.path('/');// temporary
+										// code need to
+										// set it in fb account
+										});
 								}
 							}
-
 						} ]);
