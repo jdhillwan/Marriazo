@@ -1,7 +1,8 @@
 <!-- Modal content-->
 <div class="modal-dialog modal-md">
 	<div class="modal-header">
-		<button type="button" class="close pull-right" ng-click="$parent.closeModal()">&times;</button>
+		<button type="button" class="close pull-right"
+			ng-click="$parent.closeModal()">&times;</button>
 		<h4 class="modal-title text-center">Login</h4>
 	</div>
 	<div class="modal-body">
@@ -47,22 +48,22 @@
 						</div>
 						<!-- <span class="help-block">Password error</span> -->
 
-						<button class="btn btn-lg btn-block marizo_btn" type="submit">Login</button>
+						<button class="btn btn-lg btn-block marizo_btn mt-5" type="submit">Login</button>
 					</form>
 				</div>
 			</div>
 			<div class="row ">
 				<div class="col-xs-12 col-sm-offset-1 col-sm-5">
 					<form>
-						<div style="margin-top: 10px;">
-							<input style="position: absolute;" type="checkbox"
-								name="Remember" checked>Remember Me
+						<div class="mt-10">
+							<input type="checkbox" name="Remember" checked>Remember
+							Me
 						</div>
 					</form>
 				</div>
 				<div class="col-xs-12 col-sm-5">
 					<p class="omb_forgotPwd">
-						<a href="#">Forgot password?</a>
+						<a href="" ng-click="showForgotPasswordModal()">Forgot password?</a>
 					</p>
 				</div>
 			</div>

@@ -60,7 +60,9 @@ public class LoginDAOImpl implements LoginDAO {
 	}
 
 	public Object fetchUserDetails(String email, String collection) {
-		Query query = new Query(Criteria.where("email").is(email));
+		Criteria criteria = new Criteria();
+		criteria.orOperator(Criteria.where("email").is(email), Criteria.where("mobile").is(email));
+		Query query = new Query(criteria);
 		return mongoTemplate.findOne(query, UserDTO.class, collection);
 	}
 

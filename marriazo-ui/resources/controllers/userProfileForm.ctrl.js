@@ -29,15 +29,13 @@ angular.module('MarriazoApp').controller('UserProfileFormController',['$scope','
 	}
 
 	scope.updateUser = function() {
-		scope.userDetails.name = scope.firstName + " " + scope.lastName;
 		$http({
 				method : "PUT",
 				url : "../marriazo-portal/user/update.rest",
 				data : scope.userDetails
 			}).then(function(response) {
 				if (response != null && response.data != null && response.data.response != null) {
-					scope.userDetails = "";
-					fetchUserByUserName();
+					fetchUserDetails();
 					NotificationService.success("Success","Profile Updated Successfully");
 				}
 		});

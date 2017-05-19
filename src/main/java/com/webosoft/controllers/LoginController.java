@@ -167,5 +167,15 @@ public class LoginController {
 		}
 		return false;
 	}
+	
+	@RequestMapping(value = "/forgot.rest", method = RequestMethod.POST)
+	public Object forgotPassword(@RequestBody String userName) {
+		try{
+			return loginService.forgotPassword(userName);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

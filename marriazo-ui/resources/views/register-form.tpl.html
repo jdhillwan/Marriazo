@@ -44,7 +44,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope icon_clr"></i></span> <input type="email"
-								class="form-control" ng-model="user.email" placeholder="Email">
+								class="form-control" ng-model="user.email" placeholder="Email" required>
 						</div>
 						<span class="help-block"></span>
 					</div>
@@ -53,7 +53,7 @@
 						<div class="input-group">
 							<span class="input-group-addon" ng-click="open1($event)"><i
 								class="fa fa-birthday-cake icon_clr"></i></span> <input type="text" class="form-control"
-											uib-datepicker-popup="MM/dd/yyyy" ng-model="user.DOB"
+											uib-datepicker-popup="MM/dd/yyyy" ng-model="user.DOB" ng-focus="open1($event)"
 											is-open="popup1.opened" ng-required="true" close-text="Close" placeholder="Birth Date" />
 						</div>
 						<span class="help-block"></span>
@@ -63,7 +63,7 @@
 						<div class="input-group">
 							<span class="input-group-addon" ng-click="open2($event)"><i
 								class="fa fa-lock icon_clr"></i></span> <input type="text" class="form-control"
-											uib-datepicker-popup="MM/dd/yyyy" ng-model="user.wedding_date"
+											uib-datepicker-popup="MM/dd/yyyy" ng-model="user.wedding_date" ng-focus="open2($event)"
 											is-open="popup2.opened" close-text="Close" placeholder="Wedding Anniversary" />
 						</div>
 						<span class="help-block"></span>
