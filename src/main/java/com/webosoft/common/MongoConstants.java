@@ -5,6 +5,7 @@ public class MongoConstants {
 	public static final String USER_COLLECTION = "user";
 	public static final String SUBSCRIBE_COLLECTION = "subscribe";
 	public static final String VENUE_COLLECTION = "venue";
+	public static final String CATERS_COLLECTION = "caters";
 
 	public static final String PAGE_REQUESTED = "p";
 	public static final String PAGE_SIZE = "ps";
