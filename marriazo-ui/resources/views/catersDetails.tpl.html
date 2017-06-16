@@ -1,0 +1,126 @@
+<!-- Page Content -->
+<section style="background: #fff4f6;">
+	<div class="container-fluid">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<h1 class="venue_color">Welcome to {{caters.name}}</h1>
+			<p class="venue_address">{{caters.city}},{{caters.state}}</p>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<div class="">
+					<div class="stars starrr col-md-6 col-sm-6 col-xs-6"
+						data-rating="0">
+						<span class="glyphicon  star glyphicon-star-empty"></span> <span
+							class="glyphicon star glyphicon-star-empty"></span> <span
+							class="glyphicon star glyphicon-star-empty"></span> <span
+							class="glyphicon star glyphicon-star-empty glyphicon-star-empty"></span>
+						<span class="glyphicon star  glyphicon-star-empty"></span>
+						<p class="starts_count">{{caters.rating}} Stars</p>
+					</div>
+					<div class="stars starrr col-md-6 col-sm-6 col-xs-6"
+						data-rating="0">
+						<span
+							class="glyphicon star glyphicon-star-empty glyphicon-star-empty"></span>
+						<span class="glyphicon star glyphicon-star-empty"></span> <span
+							class="glyphicon star glyphicon-star-empty"></span> <span
+							class="glyphicon star glyphicon-star-empty"></span> <span
+							class="glyphicon star glyphicon-star-empty"></span>
+						<p class="starts_count">777 Reviews</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4">
+				<div class="col-md-4">
+					<label>CAPACITY</label>
+				</div>
+				<div class="col-md-8">
+					<select class="form-control" id="sel1">
+						<option>0-50</option>
+						<option>51-100</option>
+						<option>101-150</option>
+						<option>151-200</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4">
+				<div class="col-md-4">
+					<label>Booking Date</label>
+				</div>
+				<div class="col-md-8">
+					<p class="input-group">
+						<input type="text" class="form-control"
+							uib-datepicker-popup="MM/dd/yyyy" ng-model="startDate"
+							ng-required="true" close-text="Close" is-open="popup1.opened"
+							ng-change="addDateFilter()" /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="open1($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div style="padding-left: 0;" class="col-md-8 col-sm-8">
+					<div style="padding-left: 0;" class="col-md-12 col-sm-12">
+						<img class="img-responsive" src="images/wedding-catering.png">
+						<div style="margin-top: 40px;" class="col-md-6 col-sm-6 col-xs-12">
+							<h2 class="text-center">
+								<span
+									style="border-bottom: 2px solid #c2707e; padding-bottom: 5px;">Services</span>
+							</h2>
+							<p>{{caters.services}}</p>
+							<ul class="venue_highlights">
+								Other than incredible food and service we also arrange:
+								<li ng-repeat="item in caters.food_services track by $index">{{item}}</li>
+							</ul>
+						</div>
+						<div style="padding-right: 0; margin-top: 40px;"
+							class="col-md-6 col-sm-6 col-xs-12">
+							<iframe ng-src="{{mapFrame}}" width="100%" height="250"
+								frameborder="0" style="border: 0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">{{caters.about}}</div>
+					<div class="col-md-12">
+						<h3 class="venue_color text-center">
+							<strong>CHOOSE YOUR OWN MENU</strong>
+						</h3>
+						<div ng-repeat="menu in caters.menu track by $index">
+							<div class="col-md-3 col-sm-3 col-xs-12 menu_headding">
+								<h4 class="menu_type">{{menu.type}}</h4>
+								<ul>
+									<li ng-repeat="item in menu.items track by $index">{{item}}</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<h3 class="venue_color text-center">
+							<strong>YOU CAN SELECT FROM MENU</strong>
+						</h3>
+
+						<a href="{{caters.weblink}}" target="_blank"><button
+								style="margin-top: 20px;" type="button"
+								class="btn center-block chk_btn">View Menu</button></a>
+						<h4>The menu items and menu prices are negotiable prior to
+							the confirmation of the function.</h4>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+
+					<p class="text-center best_rate">Best prise for booking date</p>
+					<h1 class="text-center venue_price">1,156745</h1>
+				</div>
+				<p class="text-center check_rate">Check other dates for
+					attractive booking prices.</p>
+				<img class="center-block img-responsive" src="images/price-list.png">
+				<button type="button" class="btn center-block chk_btn">Add
+					to Checklist</button>
+				<button type="button" class="btn center-block book_place">Book
+					this Palace</button>
+</section>
+
+<!-- /Page Content -->
