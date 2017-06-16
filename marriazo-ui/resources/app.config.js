@@ -40,7 +40,16 @@ app
 								}
 							})
 					.when("/blue", {
-						templateUrl : "blue.htm"
+						templateUrl : "resources/views/catering.tpl.html",
+							controller : "CateringController",
+							resolve : {
+								lazyTestCtrl : [
+										'$ocLazyLoad',
+										function($ocLazyLoad) {
+											return $ocLazyLoad
+													.load([ 'resources/controllers/catering.ctrl.js' ]);
+										} ]
+							}
 					})
 					.when(
 							"/weddingVenue",
@@ -87,7 +96,7 @@ app
 					.when(
 							"/catering",
 							{
-								templateUrl : "resources/views/catering.tpl.html",
+								templateUrl : "resources/views/cater-search-results.tpl.html",
 								controller : "CateringController",
 								resolve : {
 									lazyTestCtrl : [
@@ -98,6 +107,20 @@ app
 											} ]
 								}
 							})
+					.when(
+							"/catersDetails/:catersId",
+							{
+								templateUrl : "resources/views/catersDetails.tpl.html",
+								controller : "CatersDetailsController",
+								resolve : {
+									lazyTestCtrl : [
+											'$ocLazyLoad',
+											function($ocLazyLoad) {
+												return $ocLazyLoad
+														.load([ 'resources/controllers/catersDetails.ctrl.js' ]);
+											} ]
+								}
+					})
 					.when(
 							"/photographer",
 							{
